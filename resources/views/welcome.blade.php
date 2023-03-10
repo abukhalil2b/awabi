@@ -20,19 +20,15 @@
         
         @if (Route::has('login'))
         <div>
-
             @auth()
-
             <div class="flex flex-col text-xs sm:flex-row sm:text-sm">
                 <a href="{{ route('attendance_dashboard') }}" class="bg-white text-center w-52 p-5 rounded m-3 shadow hover:opacity-70">
                     الجماهيرية
                 </a>
-
+               
                 <a href="{{ route('distance_dashboard') }}" class="bg-white text-center w-52 p-5 rounded m-3 shadow hover:opacity-70">
                     عن بعد
                 </a>
-
-
             </div>
             <form class="mt-5 flex justify-center" action="{{ route('logout') }}" method="POST">
                 @csrf
@@ -47,11 +43,6 @@
                 <a class="bg-white text-center w-52 p-5 rounded m-3 shadow hover:opacity-70" href="{{ route('login') }}">
                     تسجيل الدخول
                 </a>
-
-                <a class="bg-white text-center w-52 p-5 rounded m-3 shadow hover:opacity-70" href="{{ route('admin.login') }}">
-                    تسجيل دخول الإدارة
-                </a>
-
             </div>
             @endauth
         </div>

@@ -21,17 +21,21 @@ class RedirectIfAuthenticated
     {
         $guards = empty($guards) ? [null] : $guards;
 
+        
+
         foreach ($guards as $guard) {
 
             if (Auth::guard($guard)->check()) {
 
-                if ($request->user()->app == 'admin') {
+                $userApp = $request->user()->app;
+                
+                if ($userApp  == 'super-admin' || $userApp  == 'distance-admin' || $userApp  == 'attendance-admin') {
 
                     return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
-                } elseif ($request->user()->app == 'distance') {
+                } elseif ($userApp  == 'distance') {
 
                     return redirect()->intended(RouteServiceProvider::DISTANCE_HOME);
-                } elseif ($request->user()->app == 'attendance') {
+                } elseif ($userApp  == 'attendance') {
 
                     return redirect()->intended(RouteServiceProvider::ATTENDANCE_HOME);
                 }

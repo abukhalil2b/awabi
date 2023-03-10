@@ -16,9 +16,20 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->user()->id != 1){
-            abort(403);
+        $userType = $request->user()->app;
+        
+        if ($userType  == 'super-admin') {
+            return $next($request);
         }
-        return $next($request);
+
+        if ($userType  == 'distance-admin') {
+            return $next($request);
+        }
+
+        if ($userType  == 'attendance-admin') {
+            return $next($request);
+        }
+
+        abort(403);
     }
 }

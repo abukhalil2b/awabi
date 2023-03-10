@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('title');
             $table->string('app');// distance - attendance
             $table->string('status')->default('active');// disabled - active
-            $table->timestamps();
         });
     }
 

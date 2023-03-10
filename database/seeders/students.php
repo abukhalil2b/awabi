@@ -76,7 +76,6 @@ $students = array(
     array('phone' => '91163059'),
     array('phone' => '91170995'),
     array('phone' => '91171423'),
-    array('phone' => '91171747'),
     array('phone' => '91172099'),
     array('phone' => '91184589'),
     array('phone' => '91188168'),

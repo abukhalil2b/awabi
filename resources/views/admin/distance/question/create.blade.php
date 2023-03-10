@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
 
     @if($cate->status == 'disable')
     <div class="flex justify-center">
@@ -55,4 +55,4 @@
 
 
     </div>
-</x-app-layout>
+</x-admin-layout>

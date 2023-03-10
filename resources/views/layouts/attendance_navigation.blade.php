@@ -17,16 +17,13 @@
                     </a>
                     @endif
 
-                    @if(Auth::user()->app == 'admin')
+                    @if(Auth::user()->app == 'super-admin' || Auth::user()->app == 'attendance-admin' || Auth::user()->app == 'distance-admin')
                     <a href="{{ route('admin.dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                     @endif
-                    
-
-                    {{ Auth::user()->name }}
                 </div>
-                
+
             </div>
 
             <!-- Settings Dropdown -->
@@ -34,7 +31,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div class="text-xs">{{ Auth::user()->name }}</div>
 
                             <div class="mr-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -80,12 +77,12 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200 flex flex-col items-center">
+        <div class="pt-4 pb-1 border-t border-gray-200 flex flex-col items-center absolute h-screen w-1/2 bg-gray-500">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">
+                <div class="font-xs text-base text-gray-800">{{ Auth::user()->name }}</div>
+                <div class="font-xs text-sm text-gray-500">
                     @if(Auth::user()->app == 'admin')
-                    {{ Auth::user()->email }}
+                    {{ Auth::user()->name }}
                     @endif
                 </div>
             </div>
@@ -107,6 +104,8 @@
                     </x-responsive-nav-link>
                 </form>
             </div>
+            
         </div>
+
     </div>
 </nav>

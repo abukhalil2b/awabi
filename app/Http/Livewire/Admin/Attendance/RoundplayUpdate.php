@@ -20,7 +20,7 @@ class RoundplayUpdate extends Component
 
     public function active()
     {
-        Roundplay::where('status','active')
+        $result = Roundplay::where('status','active')
         ->update(['status'=>'disable']);
 
         $this->roundplay->status = 'active';

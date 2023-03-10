@@ -1,0 +1,8 @@
+database
+name: alawabi
+user: root
+password: BMytUjfLFg0PciBnBuCOkg
+
+server
+root@moth-v6.site
+password: 10$aklGumeIXB/111MtPQmlQe5a

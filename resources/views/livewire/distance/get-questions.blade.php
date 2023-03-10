@@ -16,7 +16,7 @@
 
     @endif
 
-    <div x-data="getDistanceQuestions( {{ $questions }} )">
+    <div x-data="getDistanceQuestions( {{ json_encode($questions) }} )">
 
         <template x-for="question in questions">
             <div class="mt-1 border border-black rounded" :key="question.id">

@@ -16,8 +16,11 @@ class Distance
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->user()->app != 'distance'){
-            abort(403);
+        if ($request->user()->id != 1) {
+
+            if ($request->user()->app != 'distance') {
+                abort(403);
+            }
         }
 
         return $next($request);

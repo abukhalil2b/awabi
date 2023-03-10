@@ -24,8 +24,6 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('app')->default('distance');// admin - distance - attendance
             $table->string('phone')->nullable()->unique();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('plain_password',30);
             

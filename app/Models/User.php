@@ -21,6 +21,40 @@ class User extends Authenticatable
         ->first()? true:false;
     }
 
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class,'role_user','user_id','role_id');
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class,'user_permission','user_id','permission_id');
+    }
+
+    public function hasPermission($permission)
+    {
+        if ( $this->id === 1 ) {
+			return true;
+		}
+
+        $hasPermission = $this->permissions()->where('slug',$permission)->first();
+
+        if($hasPermission){
+            return true;
+        }
+
+        $hasPermission = $this->roles()->whereHas('permissions',function($q)use($permission){
+            $q->where('slug',$permission);
+        })->first();
+
+        if($hasPermission){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
     /**
      * The attributes that are mass assignable.
      *

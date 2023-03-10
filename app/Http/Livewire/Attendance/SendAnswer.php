@@ -22,25 +22,37 @@ class SendAnswer extends Component
 
         $correct = $selectedOption == $this->question->ans ? 1 : 0;
 
-        $hasPermission = DB::table('user_roundplay')
+        $userRoundplay = DB::table('user_roundplay')
             ->where(['user_id' => $this->user_id, 'roundplay_id' => $this->roundplay_id])
             ->first();
 
-        if($hasPermission){
+        if ($userRoundplay) {
 
             Answer::create([
                 'app' => 'attendance',
-                
+
                 'roundplay_id' => $this->question->cate_id,
-                
+
                 'question_id' => $this->question->id,
-                
+
                 'user_id' => $this->user_id,
-                
+
                 'ans' => $selectedOption,
-                
+
                 'correct' => $correct,
             ]);
+
+            if ($correct) {
+                $newMark = $userRoundplay->mark + 1;
+
+                DB::table('user_roundplay')
+                ->where([
+                    'user_id'=> $this->user_id
+                ])
+                ->update([
+                    'mark' => $newMark
+                ]);
+            }
         }
 
         $this->show = false;

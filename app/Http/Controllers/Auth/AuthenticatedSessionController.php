@@ -21,10 +21,6 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
-    public function adminCreate()
-    {
-        return view('auth.admin.login');
-    }
 
     /**
      * Handle an incoming authentication request.
@@ -35,17 +31,12 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
 
-        //add '@gmail.com' for normal user
-        if ($request->app == null) {
-
-            $request['email'] = $request['email'] . '@gmail.com';
-        }
-
+       
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        if ($request->user()->app == 'admin') {
+        if ($request->user()->app == 'super-admin' || $request->user()->app == 'distance-admin' || $request->user()->app == 'attendance-admin') {
             
             return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
 

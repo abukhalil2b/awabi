@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
 
 
     <div class="p-3">
@@ -59,4 +59,4 @@
 
 
     </div>
-</x-app-layout>
+</x-admin-layout>

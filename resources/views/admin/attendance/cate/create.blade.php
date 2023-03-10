@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Admin - attendance - cate - create
@@ -40,4 +40,4 @@
         </a>
         @endforeach
     </div>
-</x-app-layout>
+</x-admin-layout>

@@ -16,7 +16,7 @@
 
 <body>
     <div class="min-h-screen bg-gray-100">
-        @include('layouts.navigation')
+    @include('layouts.attendance_navigation')
 
         @if( isset( $question ) )
     <!-- if question is open => show question -->

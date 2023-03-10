@@ -76,7 +76,7 @@ class GetQuestions extends Component
 
                 $this->answers = json_decode($answered->ans);
 
-                $this->questions = json_encode($this->questions);
+                $this->questions = $this->questions;
 
             }
         }

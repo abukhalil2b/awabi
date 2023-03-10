@@ -1,7 +1,7 @@
-<x-app-layout>
+<x-admin-layout>
 
     <div class="">
         {{ $user->name }}
 
     </div>
-</x-app-layout>
+</x-admin-layout>

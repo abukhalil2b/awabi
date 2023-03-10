@@ -18,21 +18,7 @@
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 
-        @if(Auth::user()->app == 'admin')
-        <div class="flex h-screen">
-            <aside class="w-32 bg-slate-700">
-                @include('layouts._admin_aside')
-            </aside>
-            <main class="p-2 w-full">
-                {{ $slot }}
-            </main>
-        </div>
-
-        @else
-        
         {{ $slot }}
-        
-        @endif
 
     </div>
 

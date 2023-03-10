@@ -1,10 +1,13 @@
-<x-app-layout>
-
-    <div  class="">
-     
-    <livewire:admin.attendance.user-create/>
-
-    <livewire:admin.attendance.user-index/>
-    
+<x-admin-layout>
+    <div onclick="window.print()" class="flex justify-center items-center w-20 border rounded hover:cursor-pointer print:hidden">
+        print
     </div>
-</x-app-layout>
+
+    <div class="">
+
+        <livewire:admin.attendance.user-create />
+
+        <livewire:admin.attendance.user-index />
+
+    </div>
+</x-admin-layout>

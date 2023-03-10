@@ -17,7 +17,7 @@
 <body>
     <div class="min-h-screen bg-gray-100">
 
-        @include('layouts.navigation')
+        @include('layouts.distance_navigation')
 
         <div class="p-3">
         <livewire:distance.get-questions />

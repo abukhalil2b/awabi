@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
 
     <div  class="">
      
@@ -7,4 +7,4 @@
     <livewire:admin.distance.user-index/>
     
     </div>
-</x-app-layout>
+</x-admin-layout>
