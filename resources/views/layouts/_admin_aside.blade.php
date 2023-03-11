@@ -1,4 +1,4 @@
-<div class="p-1 text-xs shadow hidden sm:block">
+<div class="p-1 text-xs shadow hidden sm:block print:hidden">
     <div class="mr-1 text-white">
         الجماهيرية
     </div>

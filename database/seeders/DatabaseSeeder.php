@@ -52,12 +52,13 @@ class DatabaseSeeder extends Seeder
         /** - - - - - attendance students - - - - - - - -  */
         require __DIR__ . '/attendance_students.php';
         foreach ($attendances as $attendance) {
+            $randPass = rand(100000,999999);
             User::create([
                 'app' => 'attendance',
                 'name' => $attendance['name'],
                 'phone' => $attendance['phone'],
-                'password' => Hash::make($attendance['password']),
-                'plain_password' => $attendance['password']
+                'password' => Hash::make($randPass),
+                'plain_password' => $randPass
             ]);
         }
 
@@ -96,21 +97,21 @@ class DatabaseSeeder extends Seeder
         }
 
 
-        /** - - - - - - questions - - - - - - -  */
-        // require __DIR__ . '/questions.php';
+        // /** - - - - - - questions - - - - - - -  */
+        require __DIR__ . '/questions.php';
 
-        // foreach ($questions as $question) {
+        foreach ($questions as $question) {
 
-        //     Question::create([
-        //         'content' => $question['content'],
-        //         'A' => $question['op1'],
-        //         'B' => $question['op2'],
-        //         'C' => $question['op3'],
-        //         'D' => $question['op3'],
-        //         'ans' => 'A',
-        //         'cate_id' => 1,
-        //     ]);
-        // }
+            Question::create([
+                'content' => $question['content'],
+                'A' => $question['op1'],
+                'B' => $question['op2'],
+                'C' => $question['op3'],
+                'D' => $question['op3'],
+                'ans' => 'A',
+                'cate_id' => 1,
+            ]);
+        }
 
         /** - - - - - - permissions - - - - - - -  */
         require __DIR__ . '/permissions.php';

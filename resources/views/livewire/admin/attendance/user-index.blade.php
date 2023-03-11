@@ -1,7 +1,7 @@
 <div>
     @foreach($users as $user)
 
-    <a href="{{ route('admin.attendance.user.show',$user->id) }}" class="mt-1 border rounded bg-white p-1 flex flex-col gap-1 hover:opacity-70 print:flex-row print:items-center">
+    <a href="{{ route('admin.attendance.user.show',$user->id) }}" class="mt-1 border rounded bg-white p-1 flex flex-col gap-1 hover:opacity-70 print:flex-row print:items-center print:text-xs print:mt-2">
         
         <div>
             {{ $user->name }}
