@@ -16,7 +16,15 @@
 
 <body>
     <div class="min-h-screen bg-gray-100">
-        @include('layouts.navigation')
+        <!-- distance -->
+        @if(auth()->user()->app == 'distance_')
+        @include('layouts.distance_navigation')
+        @endif
+
+        <!-- attendance -->
+        @if(auth()->user()->app == 'attendance_')
+        @include('layouts.attendance_navigation')
+        @endif
 
         {{ $slot }}
 

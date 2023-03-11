@@ -25,6 +25,8 @@ class RoundplayCreate extends Component
 
         $this->validate();
 
+        $this->roundplay->status = 'disable';
+
         $this->roundplay->save();
 
         $this->emit('refreshRoundplay');
