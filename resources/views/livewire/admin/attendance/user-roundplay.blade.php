@@ -12,6 +12,7 @@
                 value="{{$user->id}}"
                 wire:click="save('{{ $user->id }}')"/>
 
+                <span class="text-xs text-red-800">{{ $user->phone }}</span>
                 {{ $user->name }}
         </label>
 

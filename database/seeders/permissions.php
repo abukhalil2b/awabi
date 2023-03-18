@@ -138,4 +138,10 @@ $permissions = [
         'slug' => 'distance.question.delete',
         'cate' => 'distance.question'
     ],
+
+    [
+        'title' => 'distance.question.answer_index',
+        'slug' => 'distance.question.answer_index',
+        'cate' => 'distance.question'
+    ],
 ];

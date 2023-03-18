@@ -1,21 +1,12 @@
 <div>
-    <div>
-        المشاركين عن بعد
-        ( {{ count($users) }} )
-    </div>
-    @foreach($users as $user)
+    <a href="{{ route('admin.distance.user.updateduser_index') }}" class="mt-5 block">
+    المشاركين عن بعد المحدثين بياناتهم
+        ( {{ count($updatedUsers) }} )
+    </a>
 
-    <div class="mt-1 border rounded bg-white p-1 flex flex-col">
+    <a href="{{ route('admin.distance.user.notupdateduser_index') }}" class="mt-5 block">
+    المشاركين عن بعد الغير محدثين بياناتهم
+    ( {{ count($notUpdatedUsers) }} )
+    </a>
 
-        <a href="{{ route('admin.distance.user.show',$user->id) }}" class="text-xs text-black">
-            الاسم:
-            {{ $user->name }}
-        </a>
-        <div class="text-xs text-gray-400">
-            الهاتف:
-            {{ $user->phone }}
-        </div>
-    </div>
-
-    @endforeach
 </div>

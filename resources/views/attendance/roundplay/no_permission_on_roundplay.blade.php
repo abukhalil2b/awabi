@@ -1,48 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html dir="rtl">
 
 <head>
-    <title>لا توجد عندك صلاحيات </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <style>
-        html,
-        body {
-            height: 100%;
-        }
+    @livewireStyles
 
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            color: #B0BEC5;
-            display: table;
-            font-weight: 100;
-            font-family: 'Lato';
-        }
-
-        .container {
-            text-align: center;
-            display: table-cell;
-            vertical-align: middle;
-        }
-
-        .content {
-            text-align: center;
-            display: inline-block;
-        }
-
-        .title {
-            font-size: 72px;
-            margin-bottom: 40px;
-        }
-    </style>
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
-    <div class="container">
-        <div class="content">
-            <div class="title">لا توجد عندك صلاحيات </div>
+    <div class="min-h-screen bg-gray-100 flex justify-center items-center">
+        <div>
+            <div class="flex justify-center items-center text-2xl">
+            لا توجد عندك صلاحيات 
+            </div>
+            <form class="mt-5 flex justify-center" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <x-danger-button>
+                    تسجيل الخروج
+                </x-danger-button>
+            </form>
         </div>
     </div>
 </body>

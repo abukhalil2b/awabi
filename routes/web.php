@@ -11,6 +11,7 @@ use App\Http\Controllers\distance\CateController as DistanceCateController;
 use App\Http\Controllers\distance\QuestionController as DistanceQuestionController;
 use App\Http\Controllers\distance\UserController as DistanceUserController;
 
+use App\Http\Livewire\admin\Permission\Create as PermissionCreate;
 use App\Http\Controllers\PermissionController;
 
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+    if (!auth()->user()) {
+        return redirect()->route('login');
+    }
+
+    $user = auth()->user();
+
+    if ($user->app == 'distance') {
+        return redirect()->route('distance_dashboard');
+    }
+
+    if ($user->app == 'attendance') {
+        return redirect()->route('attendance_dashboard');
+    }
+
+    if ($user->app == 'distance-admin' || $user->app == 'attendance-admin') {
+        return redirect()->route('admin.dashboard');
+    }
+
+
+
     return view('welcome');
 });
 
@@ -86,9 +108,25 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     // user
+    Route::post('admin/distance/user/search', [DistanceUserController::class, 'search'])
+        ->middleware('userPermission:distance.user.search')
+        ->name('admin.distance.user.search');
+
+    Route::get('admin/distance/user/search', [DistanceUserController::class, 'search'])
+        ->middleware('userPermission:distance.user.search')
+        ->name('admin.distance.user.search');
+
     Route::get('admin/distance/user/create', [DistanceUserController::class, 'create'])
         ->middleware('userPermission:distance.user.create')
         ->name('admin.distance.user.create');
+
+    Route::get('admin/distance/user/updateduser_index', [DistanceUserController::class, 'updateduserIndex'])
+        ->middleware('userPermission:distance.user.updateduser_index')
+        ->name('admin.distance.user.updateduser_index');
+
+    Route::get('admin/distance/user/notupdateduser_index', [DistanceUserController::class, 'notupdateduserIndex'])
+        ->middleware('userPermission:distance.user.notupdateduser_index')
+        ->name('admin.distance.user.notupdateduser_index');
 
     Route::get('admin/distance/user/show/{id}', [DistanceUserController::class, 'show'])
         ->middleware('userPermission:distance.user.show')
@@ -122,6 +160,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('admin/distance/question/delete/{question}', [DistanceQuestionController::class, 'delete'])
         ->middleware('userPermission:distance.question.delete')
         ->name('admin.distance.question.delete');
+
+    //answer
+    Route::get('admin/distance/question/answer_index/{cate}', [DistanceQuestionController::class, 'answerIndex'])
+        ->middleware('userPermission:distance.question.answer_index')
+        ->name('admin.distance.question.answer_index');
 });
 
 /*
@@ -201,6 +244,8 @@ require __DIR__ . '/auth.php';
 */
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('admin/permission/create', PermissionCreate::class)->name('admin.permission.create');
+
     Route::get('admin/role/index', [PermissionController::class, 'roleIndex'])->name('admin.role.index');
 
     Route::get('admin/role_permission/{role}', [PermissionController::class, 'rolePermission'])->name('admin.role_permission');

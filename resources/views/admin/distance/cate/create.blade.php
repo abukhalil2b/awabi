@@ -28,16 +28,22 @@
         </form>
 
     </div>
-    <div class="p-1 grid md:grid-cols-4">
+    <div class="p-1 grid md:grid-cols-3">
 
         @foreach($cates as $cate)
-        <a href="{{ route('admin.distance.question.create',$cate->id) }}" 
-        class="mt-1 p-1 border rounded flex flex-col items-center bg-white w-full h-16 {{ $cate->status =='active' ? '' : 'opacity-30' }}">
+        <div class="mt-1 p-1 border rounded flex flex-col items-center bg-white w-full {{ $cate->status =='active' ? '' : 'opacity-30' }}">
             {{ $cate->title }}
-            <div>
-                {{ $cate->questions->count() }}
-            </div>
-        </a>
+            <a href="{{ route('admin.distance.question.create',$cate->id) }}" class="text-red-800">
+                الأسئلة
+
+                (  {{ $cate->questions->count() }} )
+            </a>
+            
+            <a href="{{ route('admin.distance.question.answer_index',$cate->id) }}" class="text-red-800">
+                الإجابات 
+            </a>
+
+        </div>
         @endforeach
     </div>
 </x-admin-layout>

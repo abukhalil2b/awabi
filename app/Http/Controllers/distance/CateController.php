@@ -11,6 +11,7 @@ class CateController extends Controller
 
     public function create()
     {
+
         $cates = Cate::where('app','distance')
         ->with('questions')
         ->get();

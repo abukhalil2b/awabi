@@ -1,14 +1,12 @@
 <x-admin-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Admin - distance - question - create
-        </h2>
+      
     </x-slot>
 
     <div class="p-3">
-
+            
         <livewire:admin.attendance.multi-choice-question-create :cate="$cate" />
-
+        
         @foreach($questions as $question)
 
         <div class="mt-1 flex flex-col border rounded p-1 bg-white">

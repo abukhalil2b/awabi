@@ -26,7 +26,7 @@
 
      
 
-            <div class="mt-6">
+            <div class="mt-6 flex gap-1">
                 <x-secondary-button x-on:click="$dispatch('close')">
                     إلغاء
                 </x-secondary-button>

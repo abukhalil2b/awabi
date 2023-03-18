@@ -46,7 +46,7 @@ class MultiChoiceQuestionCreate extends Component
             'ans' => $this->ans,
             'duration' => $this->duration,
             'app' => 'attendance',
-            'type' => 'multiChoice',// correctAnswer - multiChoice
+            'type' => 'multiChoice', // correctAnswer - multiChoice
             'cate_id' => $this->cate->id,
         ]);
 
@@ -54,7 +54,20 @@ class MultiChoiceQuestionCreate extends Component
         // $this->emit('refreshQuestion');
 
         $this->dispatchBrowserEvent('close-question-creation', ['name' => 'create-question']);
+    }
 
+    public function activateCate()
+    {
+        $this->cate->status = 'active';
+
+        $this->cate->save();
+    }
+
+    public function disableCate()
+    {
+        $this->cate->status = 'disable';
+
+        $this->cate->save();
     }
 
     public function render()

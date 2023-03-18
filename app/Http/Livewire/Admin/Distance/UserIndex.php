@@ -7,12 +7,21 @@ use Livewire\Component;
 
 class UserIndex extends Component
 {
-    public $listeners = ['refreshUser'=>'$refresh'];
+    public $listeners = ['refreshUser' => '$refresh'];
 
     public function render()
     {
-        $users = User::where('app','distance')->get();
+        $updatedUsers = User::where('app', 'distance')
+            ->whereNotNull('state_id')
+            ->get();
 
-        return view('livewire.admin.distance.user-index',['users'=>$users]);
+        $notUpdatedUsers = User::where('app', 'distance')
+            ->whereNull('state_id')
+            ->get();
+
+        return view('livewire.admin.distance.user-index', [
+            'updatedUsers' => $updatedUsers,
+            'notUpdatedUsers' => $notUpdatedUsers
+        ]);
     }
 }

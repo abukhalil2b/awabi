@@ -31,8 +31,7 @@
     <div class="p-1 grid md:grid-cols-4">
 
         @foreach($cates as $cate)
-        <a href="{{ route('admin.attendance.question.create',$cate->id) }}" 
-        class="mt-1 p-1 border rounded flex flex-col items-center bg-white w-full h-16 {{ $cate->status =='active' ? '' : 'opacity-30' }}">
+        <a href="{{ route('admin.attendance.question.create',$cate->id) }}" class="mt-1 p-1 border rounded flex flex-col items-center bg-white w-full h-16 {{ $cate->status =='active' ? '' : 'opacity-30' }}">
             {{ $cate->title }}
             <div>
                 {{ $cate->questions->count() }}
@@ -40,4 +39,19 @@
         </a>
         @endforeach
     </div>
+
+    <hr class="mt-4">
+
+    @if(count($questions))
+    الأسئلة المفتوحة
+    <div class="p-1 grid md:grid-cols-4">
+        
+        @foreach($questions as $question)
+        <div class="text-xs">
+            {{ $question->content }}
+        </div>
+        @endforeach
+    </div>
+    @endif
+
 </x-admin-layout>

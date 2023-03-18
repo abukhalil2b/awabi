@@ -1,13 +1,27 @@
-<section class="space-y-6">
+<section class="rounded space-y-6 p-1 {{ $cate->status == 'disable' ? 'bg-red-200' : '' }}" >
     <header>
         <h2 class="text-lg font-medium text-gray-900">
             {{ $cate->title }}
         </h2>
     </header>
 
-    <x-primary-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'create-question')">
-        + جديد
-    </x-primary-button>
+    <div class="flex gap-1">
+
+        @if($cate->status == 'disable')
+        <x-secondary-button wire:click="activateCate">
+            تفعيل
+        </x-secondary-button>
+        @else
+        <x-secondary-button wire:click="disableCate">
+            تعطيل
+        </x-secondary-button>
+        @endif
+
+        <x-primary-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'create-question')">
+           + سؤال جديد
+        </x-primary-button>
+
+    </div>
 
     <x-modal name="create-question" :show="false" focusable>
         <div class="p-6">
@@ -84,7 +98,7 @@
 
     <script>
         window.addEventListener('close-question-creation', event => {
-           location.reload()
+            location.reload()
         })
     </script>
 

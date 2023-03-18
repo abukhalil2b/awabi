@@ -23,6 +23,10 @@
         عن بعد
     </div>
 
+    @hasPermission('distance.user.search')
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.search') }}">البحث</a>
+    @endhasPermission
+
     @hasPermission('distance.user.create')
     <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.create') }}">المشاركين</a>
     @endhasPermission
@@ -34,10 +38,10 @@
 
     @if(auth()->id() == 1)
     <hr class="mt-2">
-    <div class="mr-1 text-white">
-        الصلاحيات
-    </div>
+
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.permission.create') }}">الصلاحيات</a>
     <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.role.index') }}">الأدوار</a>
+
     @endif
 
 </div>
