@@ -108,13 +108,13 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     // user
-    Route::post('admin/distance/user/search', [DistanceUserController::class, 'search'])
-        ->middleware('userPermission:distance.user.search')
-        ->name('admin.distance.user.search');
+    // Route::post('admin/distance/user/search', [DistanceUserController::class, 'search'])
+    //     ->middleware('userPermission:distance.user.search')
+    //     ->name('admin.distance.user.search');
 
-    Route::get('admin/distance/user/search', [DistanceUserController::class, 'search'])
-        ->middleware('userPermission:distance.user.search')
-        ->name('admin.distance.user.search');
+    // Route::get('admin/distance/user/search', [DistanceUserController::class, 'search'])
+    //     ->middleware('userPermission:distance.user.search')
+    //     ->name('admin.distance.user.search');
 
     Route::get('admin/distance/user/create', [DistanceUserController::class, 'create'])
         ->middleware('userPermission:distance.user.create')
