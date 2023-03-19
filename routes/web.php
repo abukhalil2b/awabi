@@ -11,7 +11,7 @@ use App\Http\Controllers\distance\CateController as DistanceCateController;
 use App\Http\Controllers\distance\QuestionController as DistanceQuestionController;
 use App\Http\Controllers\distance\UserController as DistanceUserController;
 
-use App\Http\Livewire\admin\Permission\Create as PermissionCreate;
+use App\Http\Livewire\Admin\Permission\Create as PermissionCreate;
 use App\Http\Controllers\PermissionController;
 
 use Illuminate\Support\Facades\Route;
