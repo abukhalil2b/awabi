@@ -12,6 +12,8 @@ class UserCreate extends Component
 
     public $phone = '';
 
+    public $message = '';
+
     protected $rules = [
         'phone' => ['required', 'unique:users']
     ];
@@ -23,23 +25,20 @@ class UserCreate extends Component
 
         $phone = $this->phone;
 
-        $email =   $this->phone . '@gmail.com';
-
         $password =  Hash::make($this->phone);
-
-        $plain_password = $this->phone;
 
         User::create([
             'app'   =>  'distance',
             'phone' =>  $phone,
-            'email' =>  $email,
             'password' =>  $password,
-            'plain_password' =>  $plain_password,
+            'plain_password' =>  $phone,
         ]);
 
         $this->phone = '';
 
         $this->emit('refreshUser');
+
+        $this->message = 'تم إضافة المشارك';
     }
 
     public function render()
