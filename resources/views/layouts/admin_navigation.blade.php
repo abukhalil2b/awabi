@@ -77,7 +77,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200 flex flex-col items-center absolute h-screen w-1/2 bg-gray-500">
+        <div class="pt-4 pb-1 px-1 border-t border-gray-200 flex flex-col items-center absolute z-10 h-screen w-1/2 bg-gray-200">
             <div class="px-4">
                 <div class="font-xs text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-xs text-sm text-gray-500">
@@ -99,7 +99,7 @@
                     @csrf
 
                     <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                        this.closest('form').submit();" class="text-red-600">
+                                        this.closest('form').submit();" class="text-red-700">
                         تسجيل الخروج
                     </x-responsive-nav-link>
                 </form>
@@ -133,7 +133,11 @@
             @endhasPermission
 
             @hasPermission('distance.cate.create')
-            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.cate.create') }}">التصنيفات</a>
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.cate.create') }}">تصنيف الأسئلة</a>
+            @endhasPermission
+
+            @hasPermission('distance.answer.dashboard')
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.answer.dashboard') }}"> الإجابات </a>
             @endhasPermission
 
 
@@ -142,6 +146,7 @@
             <div class="mr-1 text-white">
                 الصلاحيات
             </div>
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.permission.create') }}">الصلاحيات</a>
             <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.role.index') }}">الأدوار</a>
             @endif
         </div>

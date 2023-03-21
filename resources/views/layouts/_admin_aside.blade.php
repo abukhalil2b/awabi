@@ -18,6 +18,10 @@
     <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.attendance.cate.create') }}">التصنيفات</a>
     @endhasPermission
 
+    audience.question.create
+
+    <hr class="mt-2">
+
     <hr class="mt-2">
     <div class="mr-1 text-white">
         عن بعد
@@ -30,9 +34,12 @@
     @endhasPermission
 
     @hasPermission('distance.cate.create')
-    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.cate.create') }}">التصنيفات</a>
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.cate.create') }}">تصنيف الأسئلة</a>
     @endhasPermission
 
+    @hasPermission('distance.answer.dashboard')
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.answer.dashboard') }}"> الإجابات </a>
+    @endhasPermission
 
     @if(auth()->id() == 1)
     <hr class="mt-2">

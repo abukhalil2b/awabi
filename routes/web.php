@@ -6,12 +6,15 @@ use App\Http\Controllers\attendance\CateController as AttendanceCateController;
 use App\Http\Controllers\attendance\QuestionController as AttendanceQuestionController;
 use App\Http\Controllers\attendance\AnswerController as AttendanceAnswerController;
 use App\Http\Controllers\attendance\RoundplayController;
+use App\Http\Controllers\audience\QuestionController as AudienceQuestionController;
 
 use App\Http\Controllers\distance\CateController as DistanceCateController;
 use App\Http\Controllers\distance\QuestionController as DistanceQuestionController;
 use App\Http\Controllers\distance\UserController as DistanceUserController;
+use App\Http\Controllers\distance\AnswerController as DistanceAnswerController;
 
 use App\Http\Livewire\Admin\Permission\Create as PermissionCreate;
+use App\Http\Livewire\Audience\SendAnswer as AudienceSendAnswer;
 use App\Http\Controllers\PermissionController;
 
 use Illuminate\Support\Facades\Route;
@@ -42,11 +45,22 @@ Route::get('/', function () {
         return redirect()->route('admin.dashboard');
     }
 
-
-
     return view('welcome');
 });
 
+
+/*
+|--------------------------------------------------------------------------
+|   admin
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
+    Route::get('audience/question/create', [AudienceQuestionController::class, 'create'])->name('admin.audience.question.create');
+
+    Route::post('audience/question/store', [AudienceQuestionController::class, 'store'])->name('admin.audience.question.store');
+});
+
+Route::get('audience/question/sendanswer', AudienceSendAnswer::class)->name('audience.question.sendanswer');
 
 /*
 |--------------------------------------------------------------------------
@@ -165,6 +179,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/distance/question/answer_index/{cate}', [DistanceQuestionController::class, 'answerIndex'])
         ->middleware('userPermission:distance.question.answer_index')
         ->name('admin.distance.question.answer_index');
+});
+
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
+    Route::get('distance/answer/dashboard', [DistanceAnswerController::class, 'dashboard'])
+    ->name('admin.distance.answer.dashboard');
+
 });
 
 /*

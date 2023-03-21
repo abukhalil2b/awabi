@@ -32,7 +32,7 @@
                 {{ $question->D }}
             </div>
 
-            <div class="mt-3 flex gap-1">
+            <div class="mt-5 flex gap-1">
                 <a class="bg-white border rounded w-16 flex justify-center items-center" href="{{ route('admin.distance.question.edit',$question->id) }}">
                     تحديث
                 </a>

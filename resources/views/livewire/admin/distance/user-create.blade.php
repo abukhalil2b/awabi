@@ -15,7 +15,7 @@
                 <x-input-label for="phone"  class="sr-only" />
 
                 <x-text-input
-                    id="phone"
+                    type="number"
                     wire:model.lazy="phone"
                     class="outline-0 border p-1 h-10 mt-1 block w-full"
                     placeholder="رقم الجوال"
