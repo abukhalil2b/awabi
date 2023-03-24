@@ -15,6 +15,7 @@ use App\Http\Controllers\distance\AnswerController as DistanceAnswerController;
 
 use App\Http\Livewire\Admin\Permission\Create as PermissionCreate;
 use App\Http\Livewire\Audience\SendAnswer as AudienceSendAnswer;
+use App\Http\Livewire\Audience\QuestionDashboard as AudienceQuestionDashboard;
 use App\Http\Controllers\PermissionController;
 
 use Illuminate\Support\Facades\Route;
@@ -55,12 +56,19 @@ Route::get('/', function () {
 |--------------------------------------------------------------------------
 */
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
+    Route::get('audience/question/show/{audienceQuestion}', [AudienceQuestionController::class, 'show'])->name('admin.audience.question.show');
+
     Route::get('audience/question/create', [AudienceQuestionController::class, 'create'])->name('admin.audience.question.create');
 
     Route::post('audience/question/store', [AudienceQuestionController::class, 'store'])->name('admin.audience.question.store');
 });
 
-Route::get('audience/question/sendanswer', AudienceSendAnswer::class)->name('audience.question.sendanswer');
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('audience/question/dashboard', AudienceQuestionDashboard::class)->name('audience.question.dashboard');
+
+    Route::get('audience/question/sendanswer', AudienceSendAnswer::class)->name('audience.question.sendanswer');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -184,8 +192,10 @@ Route::middleware(['auth'])->group(function () {
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('distance/answer/dashboard', [DistanceAnswerController::class, 'dashboard'])
-    ->name('admin.distance.answer.dashboard');
+        ->name('admin.distance.answer.dashboard');
 
+    Route::post('distance/answer/delete', [DistanceAnswerController::class, 'deleteAllAnswers'])
+        ->name('admin.distance.answer.delete');
 });
 
 /*

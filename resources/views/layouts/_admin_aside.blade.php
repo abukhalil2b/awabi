@@ -18,10 +18,14 @@
     <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.attendance.cate.create') }}">التصنيفات</a>
     @endhasPermission
 
-    audience.question.create
+    
 
     <hr class="mt-2">
-
+    @hasPermission('audience.question.create')
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.audience.question.create') }}">
+        سؤال الجمهور
+    </a>
+    @endhasPermission
     <hr class="mt-2">
     <div class="mr-1 text-white">
         عن بعد

@@ -8,27 +8,40 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
+    public function show(AudienceQuestion $audienceQuestion)
+    {
+        return view('admin.audience.question.show', compact('audienceQuestion'));
+    }
+
     public function create()
     {
-        $question = AudienceQuestion::first();
+        $questions = AudienceQuestion::all();
 
-        return view('admin.audience.question.create',compact('question'));
+        return view('admin.audience.question.create', compact('questions'));
     }
 
     public function store(Request $request)
     {
+        $request->validate([
+            'content' => 'required',
+            'A' => 'required',
+            'B' => 'required',
+            'C' => 'required',
+            'ans' => 'required',
+        ]);
+
         AudienceQuestion::create([
-            'content' =>$request->content,
+            'content' => $request->content,
 
-            'A' =>$request->A,
+            'A' => $request->A,
 
-            'B' =>$request->B,
+            'B' => $request->B,
 
-            'C' =>$request->C,
+            'C' => $request->C,
 
-            'A' =>$request->A,
+            'D' => $request->D,
 
-            'ans' =>$request->ans,
+            'ans' => $request->ans,
 
         ]);
 

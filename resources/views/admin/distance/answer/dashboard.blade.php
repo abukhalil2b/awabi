@@ -1,25 +1,20 @@
 <x-admin-layout>
-<div class="h-16 w-full bg-slate-200 p-1 flex flex-col justify-center items-center">
-   
 
-<div class="flex gap-1">
-<div>
-    الاجابات الصحيحة
-    {{ $correctAnswerCount }}
-</div>
-
-<div>
-    الاجابات الخاطئة
-    {{ $wrongAnswerCount }}
-</div>
-</div>
-</div>
     @foreach($answers as $answer)
 
-    <div dir="ltr">
-    {{ $answer->phone }},
+    <div dir="ltr" class="text-[10px]">
+        {{ $answer->phone }},
     </div>
 
     @endforeach
 
+    <div class="w-full flex justify-center">
+        <form action="{{ route('admin.distance.answer.delete') }}" method="post">
+            @csrf
+            <x-text-input type="number" class="mt-4 w-52" placeholder='ادخل رمز الحذف' />
+            <x-primary-button class="mt-4 w-52">
+                حذف كل الاجابات
+            </x-primary-button>
+        </form>
+    </div>
 </x-admin-layout>

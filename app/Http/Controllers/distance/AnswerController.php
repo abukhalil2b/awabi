@@ -10,17 +10,19 @@ class AnswerController extends Controller
 {
     public function dashboard()
     {
-        $correctAnswerCount = Answer::where('correct',1)
-        ->count();
 
-        $wrongAnswerCount = Answer::where('correct',0)
-        ->count();
+        $answers = Answer::where(['correct' => 1, 'app' => 'distance'])
+            ->get();
 
-        $answers = Answer::where('correct',1)
-        ->get();
-
-        return view('admin.distance.answer.dashboard',compact('answers','correctAnswerCount','wrongAnswerCount'));
+        return view('admin.distance.answer.dashboard', compact('answers'));
     }
 
- 
+    public function deleteAllAnswers(Request $request)
+    {
+        if ($request->code == 1234) {
+            Answer::where(['app' => 'distance'])->delete();
+        }
+
+        return back();
+    }
 }
