@@ -16,8 +16,10 @@ use App\Http\Controllers\distance\AnswerController as DistanceAnswerController;
 use App\Http\Livewire\Admin\Permission\Create as PermissionCreate;
 use App\Http\Livewire\Audience\SendAnswer as AudienceSendAnswer;
 use App\Http\Livewire\Audience\QuestionDashboard as AudienceQuestionDashboard;
-use App\Http\Controllers\PermissionController;
+use App\Http\Livewire\Admin\Distance\UserSearch as DistanceUserSearch;
 
+use App\Http\Controllers\PermissionController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +51,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('questions_archive', function () {
+    $questions = DB::table('questions_archive')->get();
+    return view('questions_archive', compact('questions'));
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -66,9 +72,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('audience/question/dashboard', AudienceQuestionDashboard::class)->name('audience.question.dashboard');
-
-    Route::get('audience/question/sendanswer', AudienceSendAnswer::class)->name('audience.question.sendanswer');
 });
+
+// Route is open to all
+Route::get('audience/question/sendanswer', AudienceSendAnswer::class)->name('audience.question.sendanswer');
 
 /*
 |--------------------------------------------------------------------------
@@ -130,13 +137,9 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     // user
-    // Route::post('admin/distance/user/search', [DistanceUserController::class, 'search'])
-    //     ->middleware('userPermission:distance.user.search')
-    //     ->name('admin.distance.user.search');
-
-    // Route::get('admin/distance/user/search', [DistanceUserController::class, 'search'])
-    //     ->middleware('userPermission:distance.user.search')
-    //     ->name('admin.distance.user.search');
+    Route::get('admin/distance/user/search', DistanceUserSearch::class)
+        ->middleware('userPermission:distance.user.search')
+        ->name('admin.distance.user.search');
 
     Route::get('admin/distance/user/create', [DistanceUserController::class, 'create'])
         ->middleware('userPermission:distance.user.create')

@@ -125,7 +125,7 @@
 
             <hr class="mt-2">
             @hasPermission('audience.question.create')
-            <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.audience.question.create') }}">
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.audience.question.create') }}">
                 سؤال الجمهور
             </a>
             @endhasPermission
@@ -136,6 +136,8 @@
 
             @hasPermission('distance.user.create')
             <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.create') }}">المشاركين</a>
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.search') }}">المشاركين</a>
+            
             @endhasPermission
 
             @hasPermission('distance.cate.create')

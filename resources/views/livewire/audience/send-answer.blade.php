@@ -1,39 +1,46 @@
 <div class="p-3">
-    <div class="mt-5 flex gap-3">
-        <x-text-input wire:model.lazy="phone" placeholder="رقم الهاتف" type="number" class="w-full h-12" />
-        <div class="border p-1 bg-white rounded w-1/2 h-12 flex justify-center items-center hover:cursor-pointer" wire:click="checkOldAnswer">
+
+    @if($questionOpen)
+
+    <div class="mt-5 flex gap-3" x-data="{ show:false,phone:null }" x-init="$watch('phone',(v) => v.length == 8 ? show=true : false )">
+        <x-text-input wire:model.lazy="phone" x-model="phone" placeholder="رقم الهاتف" type="number" class="w-full h-12" />
+        <div x-cloak x-show="show" class="border p-1 bg-white rounded w-1/2 h-12 flex justify-center items-center hover:cursor-pointer" wire:click="checkOldAnswer">
             تم
         </div>
     </div>
 
-    @if($question)
-    <div class="mt-5 border p-1 bg-white rounded w-full h-10 flex justify-center items-center hover:cursor-pointer">
-        {{ $question->content }}
-    </div>
-    @endif
+
 
     @if($show)
-    <div class="mt-10 w-full flex justify-around">
+    <div class="mt-10 w-full">
 
-        <div wire:click="answer('A')" class="border p-1 bg-white rounded w-10 h-10 flex justify-center items-center hover:cursor-pointer">
-            A
+        @if($question)
+        <div wire:click="answer('A')" class="border mt-5 p-1 bg-white rounded flex justify-center items-center hover:cursor-pointer">
+            {{ $question->A }}
         </div>
 
-        <div wire:click="answer('B')" class="border p-1 bg-white rounded w-10 h-10 flex justify-center items-center hover:cursor-pointer">
-            B
+        <div wire:click="answer('B')" class="border mt-5 p-1 bg-white rounded flex justify-center items-center hover:cursor-pointer">
+            {{ $question->B}}
         </div>
 
-        <div wire:click="answer('C')" class="border p-1 bg-white rounded w-10 h-10 flex justify-center items-center hover:cursor-pointer">
-            C
+        <div wire:click="answer('C')" class="border mt-5 p-1 bg-white rounded flex justify-center items-center hover:cursor-pointer">
+            {{ $question->C }}
         </div>
 
-        <div wire:click="answer('D')" class="border p-1 bg-white rounded w-10 h-10 flex justify-center items-center hover:cursor-pointer">
-            D
+        <div wire:click="answer('D')" class="border mt-5 p-1 bg-white rounded flex justify-center items-center hover:cursor-pointer">
+            {{ $question->D }}
         </div>
+        @endif
+
     </div>
     @endif
 
     <div class="w-full p-3 flex justify-center items-center">
         {{ $message}}
     </div>
+    @else
+    <x-primary-button class="w-full mt-5" onclick="location.href = '/audience/question/sendanswer' ">
+        السؤال
+    </x-primary-button>
+    @endif
 </div>

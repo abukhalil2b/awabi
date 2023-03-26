@@ -35,6 +35,7 @@
 
     @hasPermission('distance.user.create')
     <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.create') }}">المشاركين</a>
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.search') }}">البحث</a>
     @endhasPermission
 
     @hasPermission('distance.cate.create')

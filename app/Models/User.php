@@ -8,6 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
 
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+
     public function roundplays(){
 
         return $this->belongsToMany(Roundplay::class,'user_roundplay')

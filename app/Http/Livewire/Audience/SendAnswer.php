@@ -10,6 +10,8 @@ class SendAnswer extends Component
 {
     public $show = false;
 
+    public $questionOpen = false;
+
     public $question;
 
     public $phone;
@@ -41,6 +43,8 @@ class SendAnswer extends Component
             'ans' => $choice,
             'point' => $point
         ]);
+
+        $this->questionOpen = false;
     }
 
     public function checkOldAnswer()
@@ -52,13 +56,21 @@ class SendAnswer extends Component
         }
 
         $this->show = true;
+
+        $this->question = AudienceQuestion::where('status', 'open')
+            ->latest('id')
+            ->select('A', 'B', 'C', 'D')->first();
     }
 
     public function mount()
     {
-        $this->question = AudienceQuestion::where('status','open')
-        ->latest('id')
-        ->select('A','B','C','D')->first();
+        $question = AudienceQuestion::where('status', 'open')
+            ->latest('id')
+            ->select('A', 'B', 'C', 'D')->first();
+
+        if ($question) {
+            $this->questionOpen = true;
+        }
     }
 
     public function render()

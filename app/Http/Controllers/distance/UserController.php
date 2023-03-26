@@ -31,11 +31,13 @@ class UserController extends Controller
         return view('admin.distance.user.create');
     }
 
+
     public function show($id)
     {
         $user = User::where(['app' => 'distance', 'id' => $id])
-            ->select('id', 'app', 'name', 'state_id')
+            ->select('id', 'app', 'name', 'state_id','phone','plain_password')
             ->firstOrFail();
+
         return view('admin.distance.user.show', compact('user'));
     }
 
