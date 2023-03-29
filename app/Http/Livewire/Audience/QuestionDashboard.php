@@ -23,6 +23,10 @@ class QuestionDashboard extends Component
 
         $this->audienceQuestion = AudienceQuestion::find($id);
 
+        $this->audienceQuestion->status = 'open';
+
+        $this->audienceQuestion->save();
+
         $this->showTimer = true;
     }
 

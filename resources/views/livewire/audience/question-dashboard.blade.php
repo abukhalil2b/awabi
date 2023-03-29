@@ -28,13 +28,13 @@
         @foreach($answers as $key => $answer)
 
         <div class="mt-2 w-full flex justify-between items-center bg-white rounded-sm">
-            <div class="flex gap-1">
+            <div class="flex gap-1 text-4xl">
                 <div class="bg-gray-600 w-8 flex justify-center items-center text-white">
                     {{ $key + 1 }}
                 </div>
                 {{ $answer->phone }}
             </div>
-            <div>
+            <div class="text-2xl">
                 {{ $answer->created_at }}
             </div>
         </div>

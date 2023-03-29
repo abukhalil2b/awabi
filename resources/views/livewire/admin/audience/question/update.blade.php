@@ -12,15 +12,15 @@
         </x-secondary-button>
     </div>
 
-    <x-secondary-button wire:click="updateStatus('ready')" class="mt-2 {{ $audienceQuestion->status == 'ready' ? 'active' : '' }}">
+    <x-secondary-button wire:click="updateStatus('ready')" class="mt-2 {{ $audienceQuestion->status == 'ready' ? ' active' : '' }}">
         ready
     </x-secondary-button>
 
-    <x-secondary-button wire:click="updateStatus('close')" class="mt-2 {{ $audienceQuestion->status == 'close' ? 'active' : '' }}">
+    <x-secondary-button wire:click="updateStatus('close')" class="mt-2 {{ $audienceQuestion->status == 'close' ? ' active' : '' }}">
         close
     </x-secondary-button>
 
-    <x-secondary-button wire:click="updateStatus('open')" class=" mt-2{{ $audienceQuestion->status == 'open' ? 'active' : '' }}">
+    <x-secondary-button wire:click="updateStatus('open')" class=" mt-2{{ $audienceQuestion->status == 'open' ? ' active' : '' }}">
         open
     </x-secondary-button>
 </div>

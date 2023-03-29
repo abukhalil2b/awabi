@@ -75,6 +75,6 @@ class SendAnswer extends Component
 
     public function render()
     {
-        return view('livewire.audience.send-answer');
+        return view('livewire.audience.send-answer')->layout('layouts.audience');
     }
 }
