@@ -47,7 +47,7 @@ class QuestionDashboard extends Component
 
     public function render()
     {
-        $questions = AudienceQuestion::where('status', 'ready')->select('id')->get();
+        $questions = AudienceQuestion::select('id','status')->get();
 
         return view('livewire.audience.question-dashboard', ['questions' => $questions])
             ->extends('layouts.attendance');

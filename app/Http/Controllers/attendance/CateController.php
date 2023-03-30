@@ -35,4 +35,6 @@ class CateController extends Controller
 
         return back();
     }
+
+   
 }

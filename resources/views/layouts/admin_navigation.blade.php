@@ -136,7 +136,7 @@
 
             @hasPermission('distance.user.create')
             <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.create') }}">المشاركين</a>
-            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.search') }}">المشاركين</a>
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.search') }}">البحث</a>
             
             @endhasPermission
 

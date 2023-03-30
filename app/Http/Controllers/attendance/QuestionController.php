@@ -13,7 +13,7 @@ class QuestionController extends Controller
     {
         $questions = Question::where('cate_id',$cate->id)->get();
 
-        return view('attendance.question.index',compact('questions'));
+        return view('attendance.question.index',compact('questions','cate'));
     }
 
     public function create(Cate $cate)
@@ -48,7 +48,8 @@ class QuestionController extends Controller
             'B'=>'required',
             'C'=>'required',
             'D'=>'required',
-            'ans'=>'required'
+            'ans'=>'required',
+            'status'=>'required'
         ]);
 
         $question->update($fields);

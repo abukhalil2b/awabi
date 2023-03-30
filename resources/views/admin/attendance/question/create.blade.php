@@ -3,13 +3,24 @@
       
     </x-slot>
 
-    <div class="p-3">
-            
-        <livewire:admin.attendance.multi-choice-question-create :cate="$cate" />
+    <div class="p-3 text-xs">
+
         
+        <livewire:admin.attendance.multi-choice-question-create :cate="$cate" />
+
+        <div x-data="{show:false}" >
+            <div @click="show=true" x-cloak x-show=" ! show " class="mt-2 hover:cursor-pointer">تعديل</div>
+            <div x-show="show">
+                <livewire:admin.attendance.cate-update :cate="$cate" />
+            </div>
+        </div>
+        
+        <div class="mt-3 bg-white rounded p-1 w-full">
+الأسئلة
+        </div>
         @foreach($questions as $question)
 
-        <div class="mt-1 flex flex-col border rounded p-1 bg-white">
+        <div class="mt-1 flex flex-col border rounded p-1 bg-white {{ $question->status == 'close' ? 'opacity-40' : '' }}">
             {{ $question->content }}
             <div class=" {{ 'A' == $question->ans ? 'bg-green-200' : '' }} ">
                 {{ $question->A }}

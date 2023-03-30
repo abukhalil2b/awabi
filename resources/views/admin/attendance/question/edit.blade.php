@@ -49,6 +49,14 @@
                 </div>
 
             </div>
+
+            <div x-data="{status: '{{ $question->status }}' }" class="flex gap-1">
+                <div @click="status = 'ready' " class="w-32 border rounded text-center hover:cursor-pointer" :class="status == 'ready'? 'active' : '' ">ready</div>
+                <div @click="status = 'open' " class="w-32 border rounded text-center hover:cursor-pointer" :class="status == 'open'? 'active' : '' ">open</div>
+                <div @click="status = 'close' " class="w-32 border rounded text-center hover:cursor-pointer" :class="status == 'close'? 'active' : '' ">close</div>
+                <input name="status" type="hidden" x-model="status">
+            </div>
+
             <input name="ans" type="hidden" x-model="ans">
             <x-primary-button class="mt-3" type="submit">
                 تحديث

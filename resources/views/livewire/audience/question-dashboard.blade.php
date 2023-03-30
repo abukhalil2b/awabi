@@ -3,9 +3,15 @@
     <div class="flex gap-1">
         @foreach($questions as $key => $question)
 
+        @if($question->status == 'ready')
         <div wire:click="getQuestion({{ $question->id }})" class="w-10 flex justify-center items-center bg-white rounded p-2 hover:cursor-pointer">
             {{ $key + 1 }}
         </div>
+        @else
+    <div class="w-10 flex justify-center items-center bg-gray-100 rounded p-2">
+        {{ $key + 1 }}
+    </div>
+        @endif
 
         @endforeach
     </div>
