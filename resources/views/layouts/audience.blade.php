@@ -15,11 +15,12 @@
 </head>
 
 <body>
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-black text-white">
  
 
-        {{ $slot }}
+       @yield('content')
 
+       @include('layouts.floating-buttons')
     </div>
 
     @livewireScripts

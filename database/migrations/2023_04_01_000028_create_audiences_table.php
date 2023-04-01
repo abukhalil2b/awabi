@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('audience_answers', function (Blueprint $table) {
+        Schema::create('audiences', function (Blueprint $table) {
             $table->id();
-            $table->string('phone');
-            $table->string('ans');
-            $table->smallInteger('point');
-            $table->timestamps();
+            $table->string('name')->nullable();
+            $table->string('phone')->nullable()->unique();
+            $table->boolean('selected')->default(0);
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('audience_answers');
+        Schema::dropIfExists('audiences');
     }
 };

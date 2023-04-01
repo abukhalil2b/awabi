@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AudienceQuestion extends Model
+class Audience extends Model
 {
+    public $timestamps = false;
+
     protected $guarded = [];
 }

@@ -13,9 +13,10 @@ use App\Http\Controllers\distance\QuestionController as DistanceQuestionControll
 use App\Http\Controllers\distance\UserController as DistanceUserController;
 use App\Http\Controllers\distance\AnswerController as DistanceAnswerController;
 
+use App\Http\Controllers\audience\AudienceController;
+
 use App\Http\Livewire\Admin\Permission\Create as PermissionCreate;
-use App\Http\Livewire\Audience\SendAnswer as AudienceSendAnswer;
-use App\Http\Livewire\Audience\QuestionDashboard as AudienceQuestionDashboard;
+use App\Http\Livewire\Audience\Register as AudienceRegister;
 use App\Http\Livewire\Admin\Distance\UserSearch as DistanceUserSearch;
 
 use App\Http\Controllers\PermissionController;
@@ -61,22 +62,16 @@ Route::get('questions_archive', function () {
 |   admin
 |--------------------------------------------------------------------------
 */
-Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
-    Route::get('audience/question/show/{audienceQuestion}', [AudienceQuestionController::class, 'show'])->name('admin.audience.question.show');
-
-    Route::get('audience/question/create', [AudienceQuestionController::class, 'create'])->name('admin.audience.question.create');
-
-    Route::post('audience/question/store', [AudienceQuestionController::class, 'store'])->name('admin.audience.question.store');
-});
-
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('audience/question/dashboard', AudienceQuestionDashboard::class)->name('audience.question.dashboard');
+    Route::get('admin/audience/dashboard',[AudienceController::class , 'dashboard'])->name('admin.audience.dashboard');
+    Route::post('admin/audience/storeSelected',[AudienceController::class , 'storeSelected'])->name('audience.store.selected');
+
+    
 });
 
 // Route is open to all
-Route::get('audience/question/sendanswer', AudienceSendAnswer::class)->name('audience.question.sendanswer');
-
+Route::get('audience/register', AudienceRegister::class)->name('audience.register');
 /*
 |--------------------------------------------------------------------------
 |   admin

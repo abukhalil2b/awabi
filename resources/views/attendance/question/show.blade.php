@@ -9,22 +9,26 @@
     {{$question->content}}
 </x-question-content>
 <div class="p-3">
-    <x-question-option letter="A">
+    <div x-data="{ show:false }">
+        <div @click="show=true" class="w-32 cursor-pointer">عرض الخيارات</div>
+
+    
+    <x-question-option letter="A" x-show="show">
         {{$question->A}}
     </x-question-option>
 
-    <x-question-option letter="B">
+    <x-question-option letter="B" x-show="show">
         {{$question->B}}
     </x-question-option>
 
-    <x-question-option letter="C">
+    <x-question-option letter="C" x-show="show">
         {{$question->C}}
     </x-question-option>
 
-    <x-question-option letter="D">
+    <x-question-option letter="D" x-show="show">
         {{$question->D}}
     </x-question-option>
-
+</div>
     <div id="timer" class="w-full h-16 mt-3 bg-red-100 text-red-900 rounded font-bold text-6xl flex items-center justify-center">
 
         {{ $question->duration }}

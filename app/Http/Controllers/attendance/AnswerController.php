@@ -24,7 +24,7 @@ class AnswerController extends Controller
         if(! $roundplay ){
             abort(404);
         }
-
+       
         $questionIds = Answer::where('roundplay_id', $roundplay->id)->distinct('question_id')->pluck('question_id');
 
         $answers = Question::whereIn('id', $questionIds)

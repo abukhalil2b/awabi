@@ -31,7 +31,7 @@ class SendAnswer extends Component
             Answer::create([
                 'app' => 'attendance',
 
-                'roundplay_id' => $this->question->cate_id,
+                'roundplay_id' => $this->roundplay_id,
 
                 'question_id' => $this->question->id,
 
