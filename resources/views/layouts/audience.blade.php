@@ -20,7 +20,7 @@
 
        @yield('content')
 
-       @include('layouts.floating-buttons')
+      
     </div>
 
     @livewireScripts

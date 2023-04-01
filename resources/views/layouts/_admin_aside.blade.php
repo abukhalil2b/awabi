@@ -19,6 +19,9 @@
     @endhasPermission
 
     <hr class="mt-2">
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.setting.index') }}">إعدادات</a>
+    
+    <hr class="mt-2">
     <div class="mr-1 text-white">
         عن بعد
     </div>

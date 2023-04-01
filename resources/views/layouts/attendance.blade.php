@@ -14,7 +14,7 @@
     <title>Document</title>
 </head>
 
-<body class="bg-gray-300 h-screen">
+<body class="bg-black h-screen">
 
     @yield('content')
 

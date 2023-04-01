@@ -123,6 +123,8 @@
             <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.attendance.cate.create') }}">التصنيفات</a>
             @endhasPermission
 
+            <hr class="mt-2">
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900"  href="{{ route('admin.setting.index') }}">إعدادات</a>
      
             <hr class="mt-2">
             <div class="mr-1 text-white">

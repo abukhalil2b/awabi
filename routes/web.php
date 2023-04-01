@@ -6,7 +6,7 @@ use App\Http\Controllers\attendance\CateController as AttendanceCateController;
 use App\Http\Controllers\attendance\QuestionController as AttendanceQuestionController;
 use App\Http\Controllers\attendance\AnswerController as AttendanceAnswerController;
 use App\Http\Controllers\attendance\RoundplayController;
-use App\Http\Controllers\audience\QuestionController as AudienceQuestionController;
+use App\Http\Controllers\SettingController;
 
 use App\Http\Controllers\distance\CateController as DistanceCateController;
 use App\Http\Controllers\distance\QuestionController as DistanceQuestionController;
@@ -49,6 +49,10 @@ Route::get('/', function () {
         return redirect()->route('admin.dashboard');
     }
 
+    if($user->app == 'super-admin'){
+        return redirect()->route('admin.dashboard');
+    }
+
     return view('welcome');
 });
 
@@ -57,6 +61,16 @@ Route::get('questions_archive', function () {
     return view('questions_archive', compact('questions'));
 });
 
+
+/*
+|--------------------------------------------------------------------------
+|   audience
+|--------------------------------------------------------------------------
+*/
+
+// Route is open to all
+Route::get('audience/register', AudienceRegister::class)->name('audience.register');
+
 /*
 |--------------------------------------------------------------------------
 |   admin
@@ -64,19 +78,19 @@ Route::get('questions_archive', function () {
 */
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('admin/audience/dashboard',[AudienceController::class , 'dashboard'])->name('admin.audience.dashboard');
-    Route::post('admin/audience/storeSelected',[AudienceController::class , 'storeSelected'])->name('audience.store.selected');
+    Route::get('admin/setting/index',[SettingController::class , 'index'])->name('admin.setting.index');
 
+    Route::get('admin/setting/show/{setting}',[SettingController::class , 'show'])->name('admin.setting.show');
     
 });
 
-// Route is open to all
-Route::get('audience/register', AudienceRegister::class)->name('audience.register');
-/*
-|--------------------------------------------------------------------------
-|   admin
-|--------------------------------------------------------------------------
-*/
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('admin/audience/dashboard',[AudienceController::class , 'dashboard'])->name('admin.audience.dashboard');
+    Route::post('admin/audience/storeSelected',[AudienceController::class , 'storeSelected'])->name('audience.store.selected');
+    
+});
+
 Route::middleware(['auth'])->group(function () {
     // user
     Route::get('admin/attendance/user/create', [AttendanceUserController::class, 'create'])

@@ -37,4 +37,17 @@
             </x-primary-button>
         </div>
     </form>
+
+    @php
+
+    $audienceSetting = App\Models\Setting::where('name','audience-register')->first();
+
+    @endphp
+
+    @if( $audienceSetting->status == 'open')
+    <div class="mt-5">
+        <a href="{{ route('audience.register') }}"> تسجيل الحضور في القاعة</a>
+    </div> 
+    @endif
+    
 </x-guest-layout>

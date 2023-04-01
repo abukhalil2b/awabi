@@ -1,8 +1,8 @@
-@extends('layouts.audience')
+@extends('layouts.attendance')
 
 @section('content')
 <div x-data="audienceSelectNumbers" x-init="audiences = {{ $audiences }}">
-    <div class="p-5 w-full flex justify-center">
+    <div class="p-5 w-full flex justify-center text-white">
         عدد الداخلين في السحب {{ count($audiences) }}
     </div>
 
@@ -17,7 +17,7 @@
     <div class="mt-10 p-5 w-full flex justify-center">
 
         <template x-if="selected">
-            <div x-text="selected.phone" @click="storeSelectAudience(selected.phone)" class="w-44 text-center text-4xl hover:border rounded p-1 hover:cursor-pointer"></div>
+            <div x-text="selected.phone" @click="storeSelectAudience(selected.phone)" class="w-44 text-white text-center text-4xl border rounded p-1 hover:cursor-pointer"></div>
         </template>
 
     </div>
