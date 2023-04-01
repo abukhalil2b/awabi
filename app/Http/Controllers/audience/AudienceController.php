@@ -10,20 +10,32 @@ class AudienceController extends Controller
 {
     public function dashboard()
     {
-        $audiences = Audience::where('selected',0)->get();
+        $audiences = Audience::where('selected', 0)->get();
 
         return view('admin.audience.dashboard', compact('audiences'));
     }
 
     public function storeSelected(Request $request)
     {
-        
-        Audience::where('phone',$request->phone)
-        ->update(['selected'=>1]);
+
+        Audience::where('phone', $request->phone)
+            ->update(['selected' => 1]);
 
         return back();
     }
 
-   
-  
+
+    public function index()
+    {
+        $audiences = Audience::all();
+
+        return view('admin.audience.index', compact('audiences'));
+    }
+
+    public function delete()
+    {
+        Audience::truncate();
+
+        return back();
+    }
 }

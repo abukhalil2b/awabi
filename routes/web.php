@@ -87,7 +87,12 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('admin/audience/dashboard',[AudienceController::class , 'dashboard'])->name('admin.audience.dashboard');
+
+    Route::get('admin/audience/index',[AudienceController::class , 'index'])->name('admin.audience.index');
+
     Route::post('admin/audience/storeSelected',[AudienceController::class , 'storeSelected'])->name('audience.store.selected');
+
+    Route::post('admin/audience/delete',[AudienceController::class , 'delete'])->name('admin.audience.delete');
     
 });
 
