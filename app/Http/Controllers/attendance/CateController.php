@@ -24,7 +24,7 @@ class CateController extends Controller
         ->with('questions')
         ->get();
 
-        $questions = Question::where('status','open')->get();
+        $questions = Question::where(['status'=>'open','app'=>'attendance'])->get();
 
         return view('admin.attendance.cate.create',compact('cates','questions'));
     }

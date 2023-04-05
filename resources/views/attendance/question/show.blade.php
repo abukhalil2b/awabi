@@ -13,19 +13,19 @@
         <div @click="show=true" class="w-32 cursor-pointer">عرض الخيارات</div>
 
     
-    <x-question-option letter="A" x-show="show">
+    <x-question-option letter="A" x-cloak x-show="show">
         {{$question->A}}
     </x-question-option>
 
-    <x-question-option letter="B" x-show="show">
+    <x-question-option letter="B" x-cloak x-show="show">
         {{$question->B}}
     </x-question-option>
 
-    <x-question-option letter="C" x-show="show">
+    <x-question-option letter="C" x-cloak x-show="show">
         {{$question->C}}
     </x-question-option>
 
-    <x-question-option letter="D" x-show="show">
+    <x-question-option letter="D" x-cloak x-show="show">
         {{$question->D}}
     </x-question-option>
 </div>

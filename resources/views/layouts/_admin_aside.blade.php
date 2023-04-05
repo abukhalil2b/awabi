@@ -15,7 +15,7 @@
     @endhasPermission
 
     @hasPermission('attendance.cate.create')
-    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.attendance.cate.create') }}">التصنيفات</a>
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.attendance.cate.create') }}">الأسئلة</a>
     @endhasPermission
 
     <hr class="mt-2">
@@ -28,11 +28,11 @@
 
     @hasPermission('distance.user.create')
     <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.create') }}">المشاركين</a>
-    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.search') }}">البحث</a>
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.search') }}">بحث عدة مشاركين</a>
     @endhasPermission
 
     @hasPermission('distance.cate.create')
-    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.cate.create') }}">تصنيف الأسئلة</a>
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.cate.create') }}">  الأسئلة </a>
     @endhasPermission
 
     @hasPermission('distance.answer.dashboard')
@@ -46,5 +46,13 @@
     <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.role.index') }}">الأدوار</a>
 
     @endif
+
+    <hr class="mt-2">
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('questions_archive') }}">
+        أرشيف الأسئلة
+    </a>
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.winner.index') }}">
+        الفائزين
+    </a>
 
 </div>

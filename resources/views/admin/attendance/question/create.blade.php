@@ -10,7 +10,7 @@
 
         <div x-data="{show:false}" >
             <div @click="show=true" x-cloak x-show=" ! show " class="mt-2 hover:cursor-pointer">تعديل</div>
-            <div x-show="show">
+            <div x-cloak x-show="show">
                 <livewire:admin.attendance.cate-update :cate="$cate" />
             </div>
         </div>

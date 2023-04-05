@@ -12,4 +12,10 @@ class Question extends Model
     {
         return $this->hasMany(Answer::class);
     }
+
+    public function cate()
+    {
+        return $this->belongsTo(Cate::class);
+
+    }
 }

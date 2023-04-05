@@ -120,12 +120,12 @@
             @endhasPermission
 
             @hasPermission('attendance.cate.create')
-            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.attendance.cate.create') }}">التصنيفات</a>
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.attendance.cate.create') }}">الأسئلة</a>
             @endhasPermission
 
             <hr class="mt-2">
-            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900"  href="{{ route('admin.setting.index') }}">إعدادات</a>
-     
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.setting.index') }}">إعدادات</a>
+
             <hr class="mt-2">
             <div class="mr-1 text-white">
                 عن بعد
@@ -133,12 +133,12 @@
 
             @hasPermission('distance.user.create')
             <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.create') }}">المشاركين</a>
-            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.search') }}">البحث</a>
-            
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.search') }}">بحث عدة مشاركين</a>
+
             @endhasPermission
 
             @hasPermission('distance.cate.create')
-            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.cate.create') }}">تصنيف الأسئلة</a>
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.cate.create') }}"> الأسئلة</a>
             @endhasPermission
 
             @hasPermission('distance.answer.dashboard')
@@ -154,6 +154,14 @@
             <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.permission.create') }}">الصلاحيات</a>
             <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.role.index') }}">الأدوار</a>
             @endif
+
+            <hr class="mt-2">
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('questions_archive') }}">
+                أرشيف الأسئلة
+            </a>
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.winner.index') }}">
+                الفائزين
+            </a>
         </div>
 
     </div>

@@ -36,14 +36,25 @@
             <a href="{{ route('admin.distance.question.create',$cate->id) }}" class="mt-5 text-red-800">
                 الأسئلة
 
-                (  {{ $cate->questions->count() }} )
+                ( {{ $cate->questions->count() }} )
             </a>
-            
+
             <a href="{{ route('admin.distance.question.answer_index',$cate->id) }}" class="mt-5 text-red-800">
-                الإجابات 
+                الإجابات
             </a>
 
         </div>
         @endforeach
     </div>
+    <hr class="my-3">
+    <div class="w-full flex justify-center">
+        <form action="{{ route('admin.distance.question.delete_all') }}" method="post">
+            @csrf
+            <x-text-input type="number" class="mt-4 w-52" placeholder='ادخل رمز الحذف' name="code" />
+            <x-primary-button class="mt-4 w-52">
+                حذف كل الأسئلة
+            </x-primary-button>
+        </form>
+    </div>
+ 
 </x-admin-layout>

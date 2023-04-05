@@ -1,12 +1,15 @@
 <x-admin-layout>
 
-    @foreach($answers as $answer)
-
-    <div dir="ltr" class="text-[10px]">
-        {{ $answer->phone }},
+    <div>
+        عدد الداخلين في  القرعة
+        {{ count($answers) }}
     </div>
 
-    @endforeach
+    <hr class="my-3">
+    <a href="{{ route('admin.distance.lot.dashboard') }}">
+        القرعة
+    </a>
+    <hr class="my-3">
 
     <div class="w-full flex justify-center">
         <form action="{{ route('admin.distance.answer.delete') }}" method="post">

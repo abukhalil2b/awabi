@@ -1,9 +1,4 @@
-<section class="space-y-6">
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ $cate->title }}
-        </h2>
-    </header>
+<div>
 
     <x-primary-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'create-question')">
         + جديد
@@ -69,14 +64,15 @@
                 <x-input-error :messages="$errors->get('duration')" class="mt-2" />
             </div>
 
-            <div class="mt-6">
+            <div class="mt-6 flex justify-between">
+
+            <x-primary-button class="ml-3" wire:click="save" wire:loading.attr="disabled">
+                    حفظ
+                </x-primary-button>
+
                 <x-secondary-button x-on:click="$dispatch('close')">
                     إلغاء
                 </x-secondary-button>
-
-                <x-primary-button class="ml-3" wire:click="save" wire:loading.attr="disabled">
-                    حفظ
-                </x-primary-button>
 
             </div>
         </div>
@@ -88,4 +84,4 @@
         })
     </script>
 
-</section>
+</div>

@@ -1,17 +1,25 @@
 <x-admin-layout>
-
+<header>
+        <h2 class="text-lg font-medium text-gray-900 ">
+            {{ $cate->title }}
+        </h2>
+    </header>
     @if($cate->status == 'disable')
-    <div class="flex justify-center">
+    <div class="flex justify-center ">
 
-        <a class=" w-1/2 rounded text-center bg-white p-1" href="{{route('admin.distance.cate.active',$cate->id)}}">
-            تفعيل أو إرسال الأسئلة
+        <a class=" w-40 rounded text-center bg-white p-1 border shadow" href="{{route('admin.distance.cate.active',$cate->id)}}">
+                إرسال الأسئلة
         </a>
     </div>
     @endif
     <div class="p-3">
 
+        <div class="flex gap-3">
         <livewire:admin.distance.multi-choice-question-create :cate="$cate" />
+        
+        <livewire:admin.distance.question-copy :cate="$cate" />
 
+        </div>
         @foreach($questions as $question)
 
         <div class="mt-1 flex flex-col border rounded p-1 bg-white">

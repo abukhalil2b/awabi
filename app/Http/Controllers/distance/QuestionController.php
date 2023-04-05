@@ -61,6 +61,14 @@ class QuestionController extends Controller
         return back();
     }
 
+    public function deleteAllQuestions(Request $request)
+    {
+        if ($request->code == 1234) {
+            Question::where(['app' => 'distance'])->delete();
+        }
+
+        return back();
+    }
 
     public function answerIndex(Cate $cate)
     {

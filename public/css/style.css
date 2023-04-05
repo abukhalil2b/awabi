@@ -1,0 +1,70 @@
+html{
+	height: 100%;
+}
+body{
+	height: 100%;
+	
+}
+.btn-container{
+	display: flex;
+}
+button{
+	flex: 1;
+	height: 40px;
+	font-size: 33px;
+}
+h1{
+	font-size: 49px !important;
+    color: #ffffff;
+    background-color: #900c0c;
+    flex: 1;
+    padding: 5px;
+    border-radius: 7px;
+    margin: 5px;
+    border: #ffffff solid 1px;
+    direction: rtl;
+    text-align: right;
+}
+.h4-container{
+	border: #ffffff solid 1px;
+    background-color: #900c0c;
+    margin: 0 5px;
+    border-radius: 7px;
+    font-size: 50px;
+}
+h6{
+	
+	text-align: center;
+	color: white;
+	margin: 0;
+	
+}
+h1{
+	font-size: 26px;
+}
+.hflex{
+direction: ltr;
+display: flex;
+position: relative;	
+}
+
+
+.span{
+	display: block;
+    width: 46px;
+    height: 51px;
+    position: absolute;
+    right: 50%;
+    top: 0;
+    border-radius: 17px;
+    margin: 14px 7px;
+    background-color: #ffffff;
+    box-shadow: -6px 0px 7px 6px white;
+}
+.note{
+	font-size: 30px;
+	color: white;
+	font-weight: bold;
+	background-color: #ce8602;
+	text-align: center;
+}

@@ -19,12 +19,12 @@
     <div x-data="getDistanceQuestions( {{ json_encode($questions) }} )">
 
         <template x-for="question in questions">
-            <div class="mt-1 border border-black rounded" :key="question.id">
-                <div class="bg-white p-1 w-full border rounded font-bold text-red-800" x-text="question.content"></div>
-                <div @click="select({qid:question.id,opt:'A'})" class="bg-white mt-3 p-1 w-full border rounded" :class="question.opt=='A' ? 'bg-green-100' : '' " x-text="question.A"></div>
-                <div @click="select({qid:question.id,opt:'B'})" class="bg-white mt-3 p-1 w-full border rounded" :class="question.opt=='B' ? 'bg-green-100' : '' " x-text="question.B"></div>
-                <div @click="select({qid:question.id,opt:'C'})" class="bg-white mt-3 p-1 w-full border rounded" :class="question.opt=='C' ? 'bg-green-100' : '' " x-text="question.C"></div>
-                <div @click="select({qid:question.id,opt:'D'})" class="bg-white mt-3 p-1 w-full border rounded" :class="question.opt=='D' ? 'bg-green-100' : '' " x-text="question.D"></div>
+            <div class="mt-1 border border-gray-400 rounded overflow-hidden" :key="question.id">
+                <div class="bg-white p-1 w-full font-bold text-red-800" x-text="question.content"></div>
+                <div @click="select({qid:question.id,opt:'A'})" class="bg-white mt-3 p-1 w-full " :class="question.opt=='A' ? 'bg-green-100 border-y border-green-600' : '' " x-text="question.A"></div>
+                <div @click="select({qid:question.id,opt:'B'})" class="bg-white mt-3 p-1 w-full " :class="question.opt=='B' ? 'bg-green-100 border-y border-green-600' : '' " x-text="question.B"></div>
+                <div @click="select({qid:question.id,opt:'C'})" class="bg-white mt-3 p-1 w-full " :class="question.opt=='C' ? 'bg-green-100 border-y border-green-600' : '' " x-text="question.C"></div>
+                <div @click="select({qid:question.id,opt:'D'})" class="bg-white mt-3 p-1 w-full " :class="question.opt=='D' ? 'bg-green-100 border-y border-green-600' : '' " x-text="question.D"></div>
             </div>
         </template>
         <div x-cloak x-show="showButton" class="mt-3 flex justify-center">

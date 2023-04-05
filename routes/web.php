@@ -7,6 +7,7 @@ use App\Http\Controllers\attendance\QuestionController as AttendanceQuestionCont
 use App\Http\Controllers\attendance\AnswerController as AttendanceAnswerController;
 use App\Http\Controllers\attendance\RoundplayController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\WinnerController;
 
 use App\Http\Controllers\distance\CateController as DistanceCateController;
 use App\Http\Controllers\distance\QuestionController as DistanceQuestionController;
@@ -49,7 +50,7 @@ Route::get('/', function () {
         return redirect()->route('admin.dashboard');
     }
 
-    if($user->app == 'super-admin'){
+    if ($user->app == 'super-admin') {
         return redirect()->route('admin.dashboard');
     }
 
@@ -59,7 +60,7 @@ Route::get('/', function () {
 Route::get('questions_archive', function () {
     $questions = DB::table('questions_archive')->get();
     return view('questions_archive', compact('questions'));
-});
+})->name('questions_archive');
 
 
 /*
@@ -78,22 +79,20 @@ Route::get('audience/register', AudienceRegister::class)->name('audience.registe
 */
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('admin/setting/index',[SettingController::class , 'index'])->name('admin.setting.index');
+    Route::get('admin/setting/index', [SettingController::class, 'index'])->name('admin.setting.index');
 
-    Route::get('admin/setting/show/{setting}',[SettingController::class , 'show'])->name('admin.setting.show');
-    
+    Route::get('admin/setting/show/{setting}', [SettingController::class, 'show'])->name('admin.setting.show');
 });
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('admin/audience/dashboard',[AudienceController::class , 'dashboard'])->name('admin.audience.dashboard');
+    Route::get('admin/audience/dashboard', [AudienceController::class, 'dashboard'])->name('admin.audience.dashboard');
 
-    Route::get('admin/audience/index',[AudienceController::class , 'index'])->name('admin.audience.index');
+    Route::get('admin/audience/index', [AudienceController::class, 'index'])->name('admin.audience.index');
 
-    Route::post('admin/audience/storeSelected',[AudienceController::class , 'storeSelected'])->name('audience.store.selected');
+    Route::post('admin/audience/storeSelected', [AudienceController::class, 'storeSelected'])->name('audience.store.selected');
 
-    Route::post('admin/audience/delete',[AudienceController::class , 'delete'])->name('admin.audience.delete');
-    
+    Route::post('admin/audience/delete', [AudienceController::class, 'delete'])->name('admin.audience.delete');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -200,10 +199,21 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('userPermission:distance.question.delete')
         ->name('admin.distance.question.delete');
 
+    Route::post('admin/distance/question/delete_all', [DistanceQuestionController::class, 'deleteAllQuestions'])
+        ->middleware('userPermission:distance.question.delete_all')
+        ->name('admin.distance.question.delete_all');
+
     //answer
     Route::get('admin/distance/question/answer_index/{cate}', [DistanceQuestionController::class, 'answerIndex'])
         ->middleware('userPermission:distance.question.answer_index')
         ->name('admin.distance.question.answer_index');
+
+    // winner
+    Route::get('admin/distance/winner/index', [WinnerController::class, 'index'])
+        ->name('admin.distance.winner.index');
+
+        Route::get('admin/distance/lot/dashboard', [WinnerController::class, 'lotDashboard'])
+        ->name('admin.distance.lot.dashboard');
 });
 
 

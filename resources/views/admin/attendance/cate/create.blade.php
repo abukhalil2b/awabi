@@ -44,11 +44,15 @@
 
     @if(count($questions))
     الأسئلة المفتوحة
-    <div class="p-1 grid md:grid-cols-4">
+    <div class="p-1">
         
         @foreach($questions as $question)
-        <div class="text-xs">
-            {{ $question->content }}
+        <div class="text-xs border p-1 rounded">
+           <div> {{ $question->content }}</div>
+           <div> {{ $question->cate->title }}</div>
+           <a href="{{ route('admin.attendance.question.edit',$question->id) }}">
+            تحديث
+           </a>
         </div>
         @endforeach
     </div>
