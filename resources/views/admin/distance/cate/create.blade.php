@@ -33,16 +33,17 @@
         @foreach($cates as $cate)
         <div class="mt-1 p-1 border rounded flex flex-col items-center bg-white w-full {{ $cate->status =='active' ? '' : 'opacity-30' }}">
             {{ $cate->title }}
-            <a href="{{ route('admin.distance.question.create',$cate->id) }}" class="mt-5 text-red-800">
-                الأسئلة
 
-                ( {{ $cate->questions->count() }} )
-            </a>
+            <div class="mt-5 flex gap-4 items-center">
 
-            <a href="{{ route('admin.distance.question.answer_index',$cate->id) }}" class="mt-5 text-red-800">
-                الإجابات
-            </a>
-
+                <a href="{{ route('admin.distance.question.create',$cate->id) }}" class="block text-xs text-red-800">
+                    الأسئلة
+                    ({{ $cate->questions->count() }})
+                </a>
+                <a href="{{ route('admin.distance.question.answer_index',$cate->id) }}" class="block text-xs text-red-800">
+                    الإجابات
+                </a>
+            </div>
         </div>
         @endforeach
     </div>
@@ -56,5 +57,5 @@
             </x-primary-button>
         </form>
     </div>
- 
+
 </x-admin-layout>

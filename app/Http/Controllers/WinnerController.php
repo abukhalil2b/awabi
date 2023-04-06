@@ -8,13 +8,7 @@ use Illuminate\Http\Request;
 
 class WinnerController extends Controller
 {
-   
-    public function index()
-    {
-        $winners = Winner::all();
 
-        return view('admin.distance.winner.index',compact('winners'));
-    }
 
     public function lotDashboard()
     {

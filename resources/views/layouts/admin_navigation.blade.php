@@ -133,7 +133,7 @@
 
             @hasPermission('distance.user.create')
             <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.create') }}">المشاركين</a>
-            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.search') }}">بحث عدة مشاركين</a>
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.user.search') }}">بحث </a>
 
             @endhasPermission
 
@@ -145,6 +145,9 @@
             <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.answer.dashboard') }}"> الإجابات </a>
             @endhasPermission
 
+            @hasPermission('distance.user')
+            <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.whatsapp.create') }}"> رسائل الواتسأب </a>
+            @endhasPermission
 
             @if(auth()->id() == 1)
             <hr class="mt-2">
@@ -156,12 +159,19 @@
             @endif
 
             <hr class="mt-2">
+
+            @if(auth()->user()->app == 'distance-admin' || auth()->user()->app == 'attendance-admin')
             <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('questions_archive') }}">
                 أرشيف الأسئلة
             </a>
+            @endif
+
+            @hasPermission('distance.user')
             <a class="w-full text-center block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.winner.index') }}">
                 الفائزين
             </a>
+            @endif
+
         </div>
 
     </div>

@@ -74,6 +74,9 @@
 	<div class="note">
 		يتم إخفاء جزء من الرقم
 	</div>
+
+	<pre id="showWinners" onclick="selectText('showWinners')" class="showWinnersContainer"></pre>
+
 	<div class="btn-container">
 		<button onclick="hideNumbers()">
 			إخفاء
@@ -84,25 +87,29 @@
 		<button onclick="withdraw()">
 			سحب
 		</button>
-		<button onclick="saveWinners()">
-			حفظ
+		<button onclick="showWinners()">
+			عرض الفائزين
 		</button>
 	</div>
 
 	<script>
-		function saveWinners() {
+		function showWinners() {
 			var winners = document.getElementsByClassName('hflex');
 
-			var phones = [];
+			var phones = '';
 
 			for (let index = 0; index < winners.length; index++) {
 				const element = winners[index];
-				phones.push(element.firstElementChild.innerHTML)
+				phones = phones + element.firstElementChild.innerHTML + "\n"
 			}
 
-			phones =  phones.map(p=>parseInt(p))
 
-			console.log(phones)
+			var showWinnersContainer = document.getElementById('showWinners');
+
+			showWinnersContainer.style.display = 'block';
+
+			showWinnersContainer.innerHTML = phones;
+
 		}
 
 		function showNumbers() {
@@ -164,6 +171,20 @@
 
 
 	<script>
+
+		function selectText(containerid) {
+			if (document.selection) { // IE
+				var range = document.body.createTextRange();
+				range.moveToElementText(document.getElementById(containerid));
+				range.select();
+			} else if (window.getSelection) {
+				var range = document.createRange();
+				range.selectNode(document.getElementById(containerid));
+				window.getSelection().removeAllRanges();
+				window.getSelection().addRange(range);
+			}
+		}
+
 		var removeElementsFromArray = (baseArray, elements) => {
 
 			var baseArray = JSON.parse(baseArray);

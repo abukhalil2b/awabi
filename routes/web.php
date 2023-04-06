@@ -8,6 +8,7 @@ use App\Http\Controllers\attendance\AnswerController as AttendanceAnswerControll
 use App\Http\Controllers\attendance\RoundplayController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\WinnerController;
+use App\Http\Controllers\WhatsappController;
 
 use App\Http\Controllers\distance\CateController as DistanceCateController;
 use App\Http\Controllers\distance\QuestionController as DistanceQuestionController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\audience\AudienceController;
 use App\Http\Livewire\Admin\Permission\Create as PermissionCreate;
 use App\Http\Livewire\Audience\Register as AudienceRegister;
 use App\Http\Livewire\Admin\Distance\UserSearch as DistanceUserSearch;
+use App\Http\Livewire\Admin\Distance\Winner\Store as DistanceWinnerStore;
 
 use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\DB;
@@ -73,7 +75,7 @@ Route::get('questions_archive', function () {
 
 // Route is open to all
 Route::get('audience/register', AudienceRegister::class)
-->name('audience.register');
+    ->name('audience.register');
 
 /*
 |--------------------------------------------------------------------------
@@ -83,8 +85,8 @@ Route::get('audience/register', AudienceRegister::class)
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('admin/setting/index', [SettingController::class, 'index'])
-    ->middleware('userPermission:attendance.user')
-    ->name('admin.setting.index');
+        ->middleware('userPermission:attendance.user')
+        ->name('admin.setting.index');
 
     Route::get('admin/setting/show/{setting}', [SettingController::class, 'show'])->name('admin.setting.show');
 });
@@ -214,12 +216,26 @@ Route::middleware(['auth'])->group(function () {
         ->name('admin.distance.question.answer_index');
 
     // winner
-    Route::get('admin/distance/winner/index', [WinnerController::class, 'index'])
-        ->middleware('userPermission:attendance.user')
+    Route::get('admin/distance/winner/index',DistanceWinnerStore::class)
+        ->middleware('userPermission:distance.user')
         ->name('admin.distance.winner.index');
 
     Route::get('admin/distance/lot/dashboard', [WinnerController::class, 'lotDashboard'])
+        ->middleware('userPermission:distance.user')
         ->name('admin.distance.lot.dashboard');
+
+    // whatsapp
+    Route::get('admin/distance/whatsapp/create', [WhatsappController::class, 'create'])
+        ->middleware('userPermission:distance.user')
+        ->name('admin.distance.whatsapp.create');
+
+        Route::get('admin/distance/whatsapp/delete/{whatsapp}', [WhatsappController::class, 'destroy'])
+        ->middleware('userPermission:distance.user')
+        ->name('admin.distance.whatsapp.delete');
+
+    Route::post('admin/distance/whatsapp/store', [WhatsappController::class, 'store'])
+        ->middleware('userPermission:distance.user')
+        ->name('admin.distance.whatsapp.store');
 });
 
 

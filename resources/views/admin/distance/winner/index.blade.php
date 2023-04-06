@@ -1,15 +1,6 @@
 <x-admin-layout>
 
-    <div class="p-1">
+    <livewire:admin.distance.winner.store />
 
-        @foreach($winners as $winner)
-
-        <div>
-            {{ $winner->phone }}
-        </div>
-
-        @endforeach
-
-    </div>
-
+  
 </x-admin-layout>

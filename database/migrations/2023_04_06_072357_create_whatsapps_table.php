@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('winners', function (Blueprint $table) {
+        Schema::create('whatsapps', function (Blueprint $table) {
             $table->id();
-            $table->string('phone')->unique();
+            $table->string('text');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('winners');
+        Schema::dropIfExists('whatsapps');
     }
 };

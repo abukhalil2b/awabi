@@ -4,6 +4,7 @@ namespace App\Http\Controllers\distance;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Whatsapp;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,19 +12,19 @@ class UserController extends Controller
 
     public function search(Request $request)
     {
-        
+
         $users = [];
 
-        if($request->phone){
+        if ($request->phone) {
 
-            $phones = explode("\r\n",$request->phone);
-// return $phones;
-            $users =  User::whereIn('phone',$phones)
-            ->whereNotIn('phone',[1,2,3])
-            ->get();
+            $phones = explode("\r\n", $request->phone);
+            // return $phones;
+            $users =  User::whereIn('phone', $phones)
+                ->whereNotIn('phone', [1, 2, 3])
+                ->get();
         }
 
-        return view('admin.distance.user.search',compact('users'));
+        return view('admin.distance.user.search', compact('users'));
     }
 
     public function create()
@@ -35,7 +36,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::where(['app' => 'distance', 'id' => $id])
-            ->select('id', 'app', 'name', 'state_id','phone','plain_password')
+            ->select('id', 'app', 'name', 'state_id', 'phone', 'plain_password')
             ->firstOrFail();
 
         return view('admin.distance.user.show', compact('user'));
@@ -57,6 +58,16 @@ class UserController extends Controller
             ->whereNull('state_id')
             ->get();
 
-        return view('admin.distance.user.notupdateduser_index', compact('notUpdatedUsers'));
+        $whatsappText = '';
+
+        $whatsapp = Whatsapp::first();
+
+        if ($whatsapp) {
+
+            $whatsappText = $whatsapp->text;
+
+        }
+
+        return view('admin.distance.user.notupdateduser_index', compact('notUpdatedUsers','whatsappText'));
     }
 }

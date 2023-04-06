@@ -81,11 +81,9 @@ class QuestionController extends Controller
         ->where('correct',0)
         ->count();
 
-        $answers = Answer::where('cate_id',$cate->id)
-        ->where('correct',1)
-        ->get();
+       
 
-        return view('admin.distance.question.answer_index',compact('cate','answers','correctAnswerCount','wrongAnswerCount'));
+        return view('admin.distance.question.answer_index',compact('cate','correctAnswerCount','wrongAnswerCount'));
     }
 
 

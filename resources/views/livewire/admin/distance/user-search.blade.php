@@ -3,10 +3,26 @@
     <div x-data="{ show:false,phone:null }" x-init="$watch('phone',(v)=>v.length > 5 ? show=true : null)" class="border rounded p-1 bg-white">
 
         <div class="text-red-800 text-xs">
+            <span class="text-blue-800"> البحث عن عدة مشتركين</span>
+
             أدخل كل رقم هاتف في سطر مستقل
         </div>
 
         <textarea x-model="phone" wire:model.lazy="phone" class="w-full h-32 text-xs border border-gray-400 rounded focus:ring-0 focus:border-black"></textarea>
+
+        <x-primary-button x-show="show" wire:click="search">
+            البحث
+        </x-primary-button>
+
+    </div>
+
+    <div x-data="{ show:false,phone:null }" x-init="$watch('phone',(v)=>v.length > 5 ? show=true : null)" class="mt-4 border rounded p-1 bg-white">
+
+        <div class="text-blue-800 text-xs">
+            البحث عن مشترك واحد
+        </div>
+
+        <x-text-input x-model="phone" type="number" wire:model.lazy="phone" class="w-full text-xs border border-gray-400 rounded focus:ring-0 focus:border-black" />
 
         <x-primary-button x-show="show" wire:click="search">
             البحث
@@ -23,10 +39,13 @@
                     الاسم
                 </td>
                 <td>
+                    البلد
+                </td>
+                <td>
                     الهاتف
                 </td>
                 <td>
-                    البلد
+                    التفاصيل
                 </td>
             </tr>
             @foreach($users as $user)
@@ -35,14 +54,22 @@
                     {{ $user->name }}
                 </td>
                 <td>
-                   <a class="active" href="{{ route('admin.distance.user.show',$user->id) }}">
-                   {{ $user->phone }}
-                   </a>
-                </td>
-                <td>
                     @if($user->state)
                     {{ $user->state->name }}
                     @endif
+                </td>
+                <td>
+
+                    <a href="https://api.whatsapp.com/send/?phone={{ $user->phone }}&text={{ $whatsappText }}&type=phone_number&app_absent=0" class="flex" target="_blank">
+                        <img src="{{ asset('whatsapp_logo_new-2x.png') }}" alt="whatsapp_logo_new-2x.png" width="20" class="bg-green-300 rounded-full">
+                        {{ $user->phone }}
+                    </a>
+
+                </td>
+                <td>
+                    <a class="text-xs" href="{{ route('admin.distance.user.show',$user->id) }}">
+                        عرض
+                    </a>
                 </td>
             </tr>
             @endforeach
