@@ -61,8 +61,8 @@ Route::get('questions_archive', function () {
     $questions = DB::table('questions_archive')->get();
     return view('questions_archive', compact('questions'));
 })
-->middleware('userPermission:attendance.user.create')
-->name('questions_archive');
+    ->middleware('userPermission:attendance.user')
+    ->name('questions_archive');
 
 
 /*
@@ -72,7 +72,8 @@ Route::get('questions_archive', function () {
 */
 
 // Route is open to all
-Route::get('audience/register', AudienceRegister::class)->name('audience.register');
+Route::get('audience/register', AudienceRegister::class)
+->name('audience.register');
 
 /*
 |--------------------------------------------------------------------------
@@ -81,7 +82,9 @@ Route::get('audience/register', AudienceRegister::class)->name('audience.registe
 */
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('admin/setting/index', [SettingController::class, 'index'])->name('admin.setting.index');
+    Route::get('admin/setting/index', [SettingController::class, 'index'])
+    ->middleware('userPermission:attendance.user')
+    ->name('admin.setting.index');
 
     Route::get('admin/setting/show/{setting}', [SettingController::class, 'show'])->name('admin.setting.show');
 });
@@ -212,9 +215,10 @@ Route::middleware(['auth'])->group(function () {
 
     // winner
     Route::get('admin/distance/winner/index', [WinnerController::class, 'index'])
+        ->middleware('userPermission:attendance.user')
         ->name('admin.distance.winner.index');
 
-        Route::get('admin/distance/lot/dashboard', [WinnerController::class, 'lotDashboard'])
+    Route::get('admin/distance/lot/dashboard', [WinnerController::class, 'lotDashboard'])
         ->name('admin.distance.lot.dashboard');
 });
 
