@@ -60,7 +60,9 @@ Route::get('/', function () {
 Route::get('questions_archive', function () {
     $questions = DB::table('questions_archive')->get();
     return view('questions_archive', compact('questions'));
-})->name('questions_archive');
+})
+->middleware('userPermission:attendance.user.create')
+->name('questions_archive');
 
 
 /*

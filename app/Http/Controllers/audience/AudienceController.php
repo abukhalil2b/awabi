@@ -27,7 +27,7 @@ class AudienceController extends Controller
 
     public function index()
     {
-        $audiences = Audience::all();
+        $audiences = Audience::latest('selected')->get();
 
         return view('admin.audience.index', compact('audiences'));
     }

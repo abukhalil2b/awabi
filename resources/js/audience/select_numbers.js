@@ -8,18 +8,22 @@ export default function () {
 
         timesOfCount: 50,
 
-        selectedPhone:'',
+        selectedPhone: "",
+
+        progress: 0,
 
         withdraw() {
+            var counter = this.timesOfCount;
+
             var interval = setInterval(() => {
-                this.timesOfCount--;
+                counter--;
 
                 this.select();
 
-                if (this.timesOfCount == 0) {
+                if (counter == 0) {
                     clearInterval(interval);
                 }
-
+                this.progress = counter;
             }, 100);
         },
 
@@ -33,9 +37,9 @@ export default function () {
             // console.log(this.selected);
         },
 
-        storeSelectAudience(phone){
-            this.selectedPhone = phone
-            console.log(phone)
-        }
+        storeSelectAudience(phone) {
+            this.selectedPhone = phone;
+            console.log(phone);
+        },
     };
 }

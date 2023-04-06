@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Winner;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,19 @@ class WinnerController extends Controller
 
     public function lotDashboard()
     {
-        return view('admin.distance.lot.dashboard');
+        $correctAnswers = Answer::where(['app'=>'distance','correct'=>1])->pluck('phone')->toArray();
+
+        $correctAnswers = array_map('intval', $correctAnswers);
+
+        $prevWinners = Winner::pluck('phone')->toArray();
+
+        $prevWinners = array_map('intval', $prevWinners);
+
+        $correctAnswers = json_encode($correctAnswers);
+
+        $prevWinners = json_encode($prevWinners);
+
+        return view('admin.distance.lot.dashboard',compact('correctAnswers','prevWinners'));
     }
 
     /**

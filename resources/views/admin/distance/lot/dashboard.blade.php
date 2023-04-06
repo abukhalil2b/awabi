@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 	<script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-	<script src="{{ asset('js/numbers.js') }}"></script>
 	<title>withdraw</title>
 </head>
 
@@ -85,10 +84,26 @@
 		<button onclick="withdraw()">
 			سحب
 		</button>
+		<button onclick="saveWinners()">
+			حفظ
+		</button>
 	</div>
-	
+
 	<script>
-		
+		function saveWinners() {
+			var winners = document.getElementsByClassName('hflex');
+
+			var phones = [];
+
+			for (let index = 0; index < winners.length; index++) {
+				const element = winners[index];
+				phones.push(element.firstElementChild.innerHTML)
+			}
+
+			phones =  phones.map(p=>parseInt(p))
+
+			console.log(phones)
+		}
 
 		function showNumbers() {
 			var element = document.querySelectorAll(".show-hide-span");
@@ -106,20 +121,30 @@
 		}
 
 
-		$(document).ready(function () {
+		$(document).ready(function() {
 
-			withdraw = function () {
+			var phoneNumbers = removeElementsFromArray('{{ $correctAnswers }}', '{{ $prevWinners }}');
+
+			withdraw = function() {
 				var min = 0;
+
 				var max = phoneNumbers.length;
+
 				var loop = 300;
+
 				var timeOut = null;
+
+
 				function countDown() {
 
 					timeOut = setTimeout(countDown, 20);
+
 					loop--;
+
 					if (loop == 0) {
 						clearTimeout(timeOut);
 					}
+
 					$('#firstWinner').text(phoneNumbers[getRandomNumber(min, max)])
 					$('#secondWinner').text(phoneNumbers[getRandomNumber(min, max)])
 					$('#thirdWinner').text(phoneNumbers[getRandomNumber(min, max)])
@@ -135,9 +160,28 @@
 
 			}
 		})
-		
-		
 	</script>
+
+
+	<script>
+		var removeElementsFromArray = (baseArray, elements) => {
+
+			var baseArray = JSON.parse(baseArray);
+
+			var elements = JSON.parse(elements);
+
+			var tempArray = [];
+
+			baseArray.filter((el, i) => {
+				if (!elements.includes(el)) {
+					tempArray.push(el)
+				}
+			})
+
+			return tempArray;
+		}
+	</script>
+
 </body>
 
 </html>

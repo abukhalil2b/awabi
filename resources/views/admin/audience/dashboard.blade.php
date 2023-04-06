@@ -3,15 +3,19 @@
 @section('content')
 <div x-data="audienceSelectNumbers" x-init="audiences = {{ $audiences }}">
     <div class="p-5 w-full flex justify-center text-white">
-        عدد الداخلين في السحب {{ count($audiences) }}
+        <a href="{{ route('admin.audience.index') }}">
+            عدد الداخلين في السحب {{ count($audiences) }}
+        </a>
     </div>
 
 
-    <div class="p-5 w-full flex gap-1 justify-center">
+    <div class="p-5 w-full flex flex-col gap-1 justify-center items-center">
         <x-secondary-button @click="withdraw">
             سحب رقم
         </x-secondary-button>
+        <progress id="file" x-model="progress" max="50" class="text-white"></progress>
     </div>
+    
 
 
     <div class="mt-10 p-5 w-full flex justify-center">
