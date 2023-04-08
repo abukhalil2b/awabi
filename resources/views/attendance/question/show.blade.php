@@ -10,7 +10,7 @@
 </x-question-content>
 <div class="p-3">
     <div x-data="{ show:false }">
-        <div @click="show=true" class="w-32 cursor-pointer">عرض الخيارات</div>
+        <div @click="show=true" class="w-32 text-white cursor-pointer">عرض الخيارات</div>
 
     
     <x-question-option letter="A" x-cloak x-show="show">

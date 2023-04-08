@@ -3,7 +3,7 @@
 @section('content')
 <div x-data="audienceSelectNumbers" x-init="audiences = {{ $audiences }}">
     <div class="p-5 w-full flex justify-center text-white">
-        <a href="{{ route('admin.audience.index') }}">
+        <a href="{{ route('admin.audience.index') }}" class="border border-white p-1 rounded hover:opacity-70">
             عدد الداخلين في السحب {{ count($audiences) }}
         </a>
     </div>

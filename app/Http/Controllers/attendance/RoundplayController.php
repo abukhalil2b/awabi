@@ -34,7 +34,9 @@ class RoundplayController extends Controller
             abort(403,'لايوجد جولة مفعلة');
         }
 
-        return view('attendance.roundplay.result',compact('roundplay'));
+        $roundplayUsers = $roundplay->users()->orderby('mark','DESC')->get();
+
+        return view('attendance.roundplay.result',compact('roundplay','roundplayUsers'));
     }
 
 
