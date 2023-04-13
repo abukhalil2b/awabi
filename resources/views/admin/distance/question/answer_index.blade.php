@@ -15,5 +15,6 @@
         </div>
     </div>
 
-
+<livewire:admin.distance.delete-question-with-answer :cate="$cate"/>
+    
 </x-admin-layout>

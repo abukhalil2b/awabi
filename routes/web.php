@@ -19,8 +19,11 @@ use App\Http\Controllers\audience\AudienceController;
 
 use App\Http\Livewire\Admin\Permission\Create as PermissionCreate;
 use App\Http\Livewire\Audience\Register as AudienceRegister;
+use App\Http\Livewire\Admin\Distance\Winner\Show as DistanceWinnerShow;
 use App\Http\Livewire\Admin\Distance\UserSearch as DistanceUserSearch;
-use App\Http\Livewire\Admin\Distance\Winner\Store as DistanceWinnerStore;
+use App\Http\Livewire\Admin\Distance\Wincate\Store as DistanceWincateStore;
+use App\Http\Livewire\Admin\Distance\Wincate\Show as DistanceWincateShow;
+
 
 use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\DB;
@@ -215,21 +218,31 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('userPermission:distance.question.answer_index')
         ->name('admin.distance.question.answer_index');
 
-    // winner
-    Route::get('admin/distance/winner/index',DistanceWinnerStore::class)
+    // wincate
+    Route::get('admin/distance/wincate/index', DistanceWincateStore::class)
         ->middleware('userPermission:distance.user')
-        ->name('admin.distance.winner.index');
+        ->name('admin.distance.wincate.index');
 
+    Route::get('admin/distance/wincate/show/{wincate}', DistanceWincateShow::class)
+        ->middleware('userPermission:distance.user')
+        ->name('admin.distance.wincate.show');
+
+
+    // winner
     Route::get('admin/distance/lot/dashboard', [WinnerController::class, 'lotDashboard'])
         ->middleware('userPermission:distance.user')
         ->name('admin.distance.lot.dashboard');
+
+    Route::get('admin/distance/winner/show',DistanceWinnerShow::class)
+    ->middleware('userPermission:distance.user')
+    ->name('admin.distance.winner.show');
 
     // whatsapp
     Route::get('admin/distance/whatsapp/create', [WhatsappController::class, 'create'])
         ->middleware('userPermission:distance.user')
         ->name('admin.distance.whatsapp.create');
 
-        Route::get('admin/distance/whatsapp/delete/{whatsapp}', [WhatsappController::class, 'destroy'])
+    Route::get('admin/distance/whatsapp/delete/{whatsapp}', [WhatsappController::class, 'destroy'])
         ->middleware('userPermission:distance.user')
         ->name('admin.distance.whatsapp.delete');
 

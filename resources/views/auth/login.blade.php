@@ -49,5 +49,6 @@
         <a href="{{ route('audience.register') }}"> تسجيل الحضور في القاعة</a>
     </div> 
     @endif
+
     
 </x-guest-layout>

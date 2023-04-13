@@ -1,25 +1,9 @@
 <div>
 
-    <div x-data="{ show:false,phone:null }" x-init="$watch('phone',(v)=>v.length > 5 ? show=true : null)" class="border rounded p-1 bg-white">
-
-        <div class="text-red-800 text-xs">
-            <span class="text-blue-800"> البحث عن عدة مشتركين</span>
-
-            أدخل كل رقم هاتف في سطر مستقل
-        </div>
-
-        <textarea x-model="phone" wire:model.lazy="phone" class="w-full h-32 text-xs border border-gray-400 rounded focus:ring-0 focus:border-black"></textarea>
-
-        <x-primary-button x-show="show" wire:click="search">
-            البحث
-        </x-primary-button>
-
-    </div>
-
     <div x-data="{ show:false,phone:null }" x-init="$watch('phone',(v)=>v.length > 5 ? show=true : null)" class="mt-4 border rounded p-1 bg-white">
 
         <div class="text-blue-800 text-xs">
-            البحث عن مشترك واحد
+            البحث برقم الهاتف
         </div>
 
         <x-text-input x-model="phone" type="number" wire:model.lazy="phone" class="w-full text-xs border border-gray-400 rounded focus:ring-0 focus:border-black" />
@@ -34,20 +18,7 @@
         <span class="text-red-800 text-xs">نتيجة البحث</span>
 
         <table class="w-full border">
-            <tr>
-                <td>
-                    الاسم
-                </td>
-                <td>
-                    البلد
-                </td>
-                <td>
-                    الهاتف
-                </td>
-                <td>
-                    التفاصيل
-                </td>
-            </tr>
+
             @foreach($users as $user)
             <tr>
                 <td>

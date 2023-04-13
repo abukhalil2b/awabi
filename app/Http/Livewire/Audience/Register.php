@@ -13,8 +13,15 @@ class Register extends Component
 
     public $message;
 
+    protected $rules = [
+        'phone' => 'required',
+        'name' => 'required',
+    ];
+
     public function register()
     {
+        $this->validate();
+
         $audience = Audience::where('phone', $this->phone)->first();
 
         if ($audience) {

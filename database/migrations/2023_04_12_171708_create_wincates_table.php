@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('winners', function (Blueprint $table) {
+        Schema::create('wincates', function (Blueprint $table) {
             $table->id();
-            $table->string('phone')->unique();
-            $table->integer('wincate_id')->unsigned();
-            $table->timestamps();
+            $table->string('title');
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('winners');
+        Schema::dropIfExists('wincates');
     }
 };

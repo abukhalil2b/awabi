@@ -15,6 +15,15 @@
         <div class="mt-5 text-green-500 text-2xl text-center">
             {{ $message }}
         </div>
+
+        <div>
+            @error('phone') <span class="mt-5 text-red-500 text-2xl text-center">{{ $message }}</span> @enderror
+        </div>
+
+        <div>
+            @error('name') <span class="mt-5 text-red-500 text-2xl text-center">{{ $message }}</span> @enderror
+        </div>
+
     </div>
 
 </div>

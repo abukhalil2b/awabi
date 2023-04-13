@@ -36,7 +36,7 @@
     @endhasPermission
 
     @hasPermission('distance.answer.dashboard')
-    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.answer.dashboard') }}"> الإجابات </a>
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.answer.dashboard') }}"> الإجابات والقرعة </a>
     @endhasPermission
 
     @hasPermission('distance.user')
@@ -59,9 +59,16 @@
     @endif
 
     @hasPermission('distance.user')
-    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.winner.index') }}">
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.wincate.index') }}">
         الفائزين
     </a>
     @endif
 
+    @hasPermission('distance.user')
+    <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.distance.winner.show') }}">
+        عرض الفائزين
+    </a>
+    @endif
+
+    
 </div>

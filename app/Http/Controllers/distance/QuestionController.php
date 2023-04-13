@@ -81,8 +81,6 @@ class QuestionController extends Controller
         ->where('correct',0)
         ->count();
 
-       
-
         return view('admin.distance.question.answer_index',compact('cate','correctAnswerCount','wrongAnswerCount'));
     }
 
