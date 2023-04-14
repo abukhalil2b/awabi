@@ -13,9 +13,9 @@
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
+        <div class="mt-4 relative">
             <x-input-label for="password" :value="' كلمة المرور '" />
-
+            <div class="absolute top-8 left-5 cursor-pointer" onclick="toggle()">إظهار</div>
             <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -30,10 +30,10 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-           
+
 
             <x-primary-button class="ml-3">
-               تسجيل الدخول
+                تسجيل الدخول
             </x-primary-button>
         </div>
     </form>
@@ -47,8 +47,22 @@
     @if( $audienceSetting->status == 'open')
     <div class="mt-5">
         <a href="{{ route('audience.register') }}"> تسجيل الحضور في القاعة</a>
-    </div> 
+    </div>
     @endif
 
-    
+
+    <script>
+        function toggle() {
+
+            var passwordInput = document.getElementById('password');
+            var passwordAttribute = passwordInput.getAttribute('type');
+            
+            if(passwordAttribute == 'password'){
+                passwordInput.setAttribute('type', 'text')
+            }else{
+                passwordInput.setAttribute('type', 'password')
+            }
+            
+        }
+    </script>
 </x-guest-layout>

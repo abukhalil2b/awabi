@@ -58,6 +58,6 @@ class Show extends Component
 
     public function render()
     {
-        return view('livewire.admin.distance.wincate.show');
+        return view('livewire.admin.distance.wincate.show')->layout('layouts.admin');
     }
 }

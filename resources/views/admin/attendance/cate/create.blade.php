@@ -47,10 +47,10 @@
     <div class="p-1">
         
         @foreach($questions as $question)
-        <div class="text-xs border p-1 rounded">
+        <div class="mt-1 text-xs border p-1 rounded">
            <div> {{ $question->content }}</div>
            <div> {{ $question->cate->title }}</div>
-           <a href="{{ route('admin.attendance.question.edit',$question->id) }}">
+           <a href="{{ route('admin.attendance.question.edit',$question->id) }}" class="mt-3 text-orange-600 font-bold">
             تحديث
            </a>
         </div>

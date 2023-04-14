@@ -35,7 +35,7 @@ class RoundplayController extends Controller
         }
 
         $roundplayUsers = $roundplay->users()->orderby('mark','DESC')->get();
-
+// return $roundplayUsers;
         return view('attendance.roundplay.result',compact('roundplay','roundplayUsers'));
     }
 

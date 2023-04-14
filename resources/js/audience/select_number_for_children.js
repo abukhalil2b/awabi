@@ -24,6 +24,7 @@ export default function () {
         prevWinners: [],
 
         withdraw() {
+
             var count = 20;
 
             var interval = setInterval(() => {
@@ -70,6 +71,7 @@ export default function () {
         },
 
         generateNumbers() {
+
             if (this.toNum < 4) {
                 return;
             }
@@ -95,6 +97,8 @@ export default function () {
             localStorage.removeItem("numbers");
 
             localStorage.removeItem("prevWinners");
+
+            this.showEraseButton = false;
         },
     };
 }

@@ -32,12 +32,12 @@
 
     @foreach($winners as $winner)
 
-    <div class="mt-2 rounded border p-1 flex justify-between items-center">
-        <div>
+    <div x-data="{ show:false }" class="mt-2 rounded border p-1 flex justify-between items-center">
+        <div @click="show=true">
             {{ $winner->phone }}
         </div>
 
-        <div class="text-red-800 hover:text-red-400 cursor-pointer" wire:click="delete({{ $winner->id }})">
+        <div x-show="show" class="text-red-800 hover:text-red-400 cursor-pointer" wire:click="delete({{ $winner->id }})">
             حذف
         </div>
     </div>
