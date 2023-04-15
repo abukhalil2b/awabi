@@ -29,16 +29,28 @@
         {{ $message }}
     </div>
     @endif
-
+<div class="text-blue-800 p-1">
+    إضغط على الرقم لإظهار الخيارات
+</div>
     @foreach($winners as $winner)
 
-    <div x-data="{ show:false }" class="mt-2 rounded border p-1 flex justify-between items-center">
-        <div @click="show=true">
+    <div x-data="{ showDeleteButton:false, showOption:false }" class="mt-2 rounded border p-1 flex justify-between items-center">
+        <div @click="showOption=true">
             {{ $winner->phone }}
         </div>
 
-        <div x-show="show" class="text-red-800 hover:text-red-400 cursor-pointer" wire:click="delete({{ $winner->id }})">
-            حذف
+        <div x-cloak x-show="showOption" class="w-1/2 flex justify-between items-center">
+            <a href="https://api.whatsapp.com/send/?phone={{ $winner->phone }}&text=''&type=phone_number&app_absent=0" class="flex" target="_blank">
+                <img src="{{ asset('whatsapp_logo_new-2x.png') }}" alt="whatsapp_logo_new-2x.png" width="20" class="bg-green-300 rounded-full">
+                <span class="mx-1 text-xs">واتسأب</span>
+            </a>
+
+            <div x-cloak x-show=" ! showDeleteButton " @click="showDeleteButton=true" class="text-red-800 hover:text-red-400 cursor-pointer">
+                حذف
+            </div>
+            <div x-cloak x-show="showDeleteButton" class="font-bold text-red-800 hover:text-red-400 cursor-pointer" wire:click="delete({{ $winner->id }})">
+                تأكيد الحذف
+            </div>
         </div>
     </div>
 
