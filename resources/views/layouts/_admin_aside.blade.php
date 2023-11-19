@@ -17,10 +17,12 @@
     @hasPermission('attendance.cate.create')
     <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.attendance.cate.create') }}">الأسئلة</a>
     @endhasPermission
-
+    
+    @hasPermission('admin.setting.index')
     <hr class="mt-2">
     <a class="block my-1 p-2 rounded bg-white text-gray-900" href="{{ route('admin.setting.index') }}">إعدادات</a>
-
+    @endhasPermission
+    
     <hr class="mt-2">
     <div class="mr-1 text-white">
         عن بعد

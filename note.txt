@@ -1,11 +1,9 @@
+
+========
 database
 name: alawabi
 user: root
-password: BMytUjfLUjfLFg0PciBuCOkg
-
-server
-root@mothakf.online
-password: BMytUjfLUjfLFg0PciBuCOkg
+password: iFhWxs3e0pOtJJX3h3jyzfd
 
 - - - - - - - - 
 composer install --optimize-autoloader --no-dev
@@ -15,23 +13,24 @@ php artisan route:cache
 php artisan view:cache
 
 - - - - - - - - 
+
+sudo apt install php8.2 php8.2-cli php8.2-curl php8.2-common php8.2-fpm php8.2-gd php8.2-imap php8.2-intl php8.2-mbstring php8.2-mysql php8.2-opcache php8.2-readline php8.2-soap php8.2-xml php8.2-zip
+sudo apt install mariadb-server
+sudo mysql_secure_installation
 apt install unzip
 apt install nginx nodejs npm
 node -v
-sudo apt install php8.1 php8.1-cli php8.1-curl php8.1-common php8.1-fpm php8.1-gd php8.1-imap php8.1-intl php8.1-mbstring php8.1-mysql php8.1-opcache php8.1-readline php8.1-soap php8.1-xml php8.1-zip
-sudo apt install mariadb-server
-sudo mysql_secure_installation
-
 - - - - - - - - 
-CREATE USER 'admin'@'%' IDENTIFIED BY 'BMytUjfLUjfLFg0PciBuCOkg';
-GRANT ALL PRIVILEGES ON alawabi.* TO 'admin'@'localhost' IDENTIFIED BY 'BMytUjfLUjfLFg0PciBuCOkg';
+CREATE USER 'admin'@'%' IDENTIFIED BY 'iFhWxs3e0pOtJJX3h3jyzfd';
+GRANT ALL PRIVILEGES ON alawabi.* TO 'admin'@'localhost' IDENTIFIED BY 'iFhWxs3e0pOtJJX3h3jyzfd';
 
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY 'BMytUjfLUjfLFg0PciBuCOkg';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY 'iFhWxs3e0pOtJJX3h3jyzfd';
 FLUSH PRIVILEGES;
 
 - - - - - - - - 
-sudo apt install certbot python3-certbot-nginx
+https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-22-04
 
+certbot --nginx -d mothakf.online
 
 - - - - - - - - 
 adduser admin
@@ -82,7 +81,7 @@ server {
     error_page 404 /index.php;
  
     location ~ \.php$ {
-        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+        fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
         fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
         include fastcgi_params;
     }
@@ -92,6 +91,7 @@ server {
     }
 }
 
+//install composer
 
 
 sudo ln -s /etc/nginx/sites-available/mothakf.online /etc/nginx/sites-enabled/
@@ -99,13 +99,13 @@ sudo unlink /etc/nginx/sites-enabled/default
 sudo nginx -t
 sudo systemctl reload nginx
 
+sudo chmod -R 755 storage
+sudo chown -R www-data:www-data storage
+
+ php artisan key:generate
 - - - - - - - - 
 
 sudo certbot certonly --standalone -d mothakf.online
 ls /etc/letsencrypt/live/mothakf.online
 sudo systemctl status certbot.timer
-
-chown -R www-data:www-data /var/www/mothakf.online/storage
-chown -R www-data:www-data /var/www/mothakf.online/bootstrap/cache
-chown -R www-data:www-data /var/www/mothakf.online/storage/framework/views
 

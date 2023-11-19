@@ -66,8 +66,8 @@ Route::get('questions_archive', function () {
     $questions = DB::table('questions_archive')->get();
     return view('questions_archive', compact('questions'));
 })
-    ->middleware('userPermission:attendance.user')
-    ->name('questions_archive');
+// ->middleware('userPermission:questions_archive')
+->name('questions_archive');
 
 
 /*
@@ -88,7 +88,7 @@ Route::get('audience/register', AudienceRegister::class)
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('admin/setting/index', [SettingController::class, 'index'])
-        ->middleware('userPermission:attendance.user')
+        ->middleware('userPermission:admin.setting.index')
         ->name('admin.setting.index');
 
     Route::get('admin/setting/show/{setting}', [SettingController::class, 'show'])->name('admin.setting.show');
@@ -169,11 +169,11 @@ Route::middleware(['auth'])->group(function () {
         ->name('admin.distance.user.create');
 
     Route::get('admin/distance/user/updateduser_index', [DistanceUserController::class, 'updateduserIndex'])
-        ->middleware('userPermission:distance.user.updateduser_index')
+        ->middleware('userPermission:admin.distance.user.updateduser_index')
         ->name('admin.distance.user.updateduser_index');
 
     Route::get('admin/distance/user/notupdateduser_index', [DistanceUserController::class, 'notupdateduserIndex'])
-        ->middleware('userPermission:distance.user.notupdateduser_index')
+        ->middleware('userPermission:admin.distance.user.notupdateduser_index')
         ->name('admin.distance.user.notupdateduser_index');
 
     Route::get('admin/distance/user/show/{id}', [DistanceUserController::class, 'show'])
@@ -233,9 +233,9 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('userPermission:distance.user')
         ->name('admin.distance.lot.dashboard');
 
-    Route::get('admin/distance/winner/show',DistanceWinnerShow::class)
-    ->middleware('userPermission:distance.user')
-    ->name('admin.distance.winner.show');
+    Route::get('admin/distance/winner/show', DistanceWinnerShow::class)
+        ->middleware('userPermission:distance.user')
+        ->name('admin.distance.winner.show');
 
     // whatsapp
     Route::get('admin/distance/whatsapp/create', [WhatsappController::class, 'create'])

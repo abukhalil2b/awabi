@@ -27,7 +27,7 @@ class UserCreate extends Component
 
         $password =  Hash::make($this->phone);
 
-        User::create([
+        $user = User::create([
             'app'   =>  'distance',
             'phone' =>  $phone,
             'password' =>  $password,
@@ -38,7 +38,7 @@ class UserCreate extends Component
 
         $this->emit('refreshUser');
 
-        $this->message = 'تم إضافة المشارك';
+        $this->message = ' تم إضافة المشارك' ;
     }
 
     public function render()
