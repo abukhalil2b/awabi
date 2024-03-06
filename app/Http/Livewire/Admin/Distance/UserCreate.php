@@ -38,7 +38,7 @@ class UserCreate extends Component
 
         $this->emit('refreshUser');
 
-        $this->message = ' تم إضافة المشارك' ;
+        $this->message = ' تم إضافة المشارك' . $user->phone;
     }
 
     public function render()
