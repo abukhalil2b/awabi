@@ -40,7 +40,7 @@
 
     @php
 
-    $audienceSetting = App\Models\Setting::where('name','audience-register')->first();
+    $audienceSetting = App\Models\Setting::where('name','تسجيل الحضور في القاعة')->first();
 
     @endphp
 

@@ -1,15 +1,5 @@
 <x-admin-layout>
 
-
-<div class="bg-white p-5 border flex justify-between">
-   <div>
-   name
-   </div>
-
-   <div>
-   status
-   </div>
-</div>
     
 @foreach($settings as $setting)
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>مسابقة المثقف الأول</title>
 
     @livewireStyles
 
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div class="h-[500px] flex justify-center items-center">
+        <div class="h-[500px] flex justify-center items-end">
             <x-secondary-button onclick="location.reload()">
                 اذهب للسؤال
             </x-secondary-button>
@@ -56,7 +56,7 @@
         @endif
     </div>
     @else
-    <div class="h-[500px] flex justify-center items-center">
+    <div class="h-[500px] flex justify-center items-end">
             <x-secondary-button onclick="location.reload()">
                 اذهب للسؤال
             </x-secondary-button>
