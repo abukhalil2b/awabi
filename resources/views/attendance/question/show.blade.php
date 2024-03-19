@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 @if($question->status == 'open')
 
 <x-question-content>
@@ -10,25 +9,26 @@
 </x-question-content>
 <div class="p-3">
     <div x-data="{ show:false }">
-        <div @click="show=true" class="w-32 text-white cursor-pointer">عرض الخيارات</div>
+        <div class="flex gap-5">
+            <div @click="show=true" class="w-32 text-white cursor-pointer">عرض الخيارات</div>
+            <a href="#" class="w-32 text-white cursor-pointer" onclick="toggelTimer()">توقيف وتشغيل العد التنازلي</a>
+        </div>
+        <x-question-option letter="A" x-cloak x-show="show">
+            {{$question->A}}
+        </x-question-option>
 
-    
-    <x-question-option letter="A" x-cloak x-show="show">
-        {{$question->A}}
-    </x-question-option>
+        <x-question-option letter="B" x-cloak x-show="show">
+            {{$question->B}}
+        </x-question-option>
 
-    <x-question-option letter="B" x-cloak x-show="show">
-        {{$question->B}}
-    </x-question-option>
+        <x-question-option letter="C" x-cloak x-show="show">
+            {{$question->C}}
+        </x-question-option>
 
-    <x-question-option letter="C" x-cloak x-show="show">
-        {{$question->C}}
-    </x-question-option>
-
-    <x-question-option letter="D" x-cloak x-show="show">
-        {{$question->D}}
-    </x-question-option>
-</div>
+        <x-question-option letter="D" x-cloak x-show="show">
+            {{$question->D}}
+        </x-question-option>
+    </div>
     <div id="timer" class="w-full h-16 mt-3 bg-red-100 text-red-900 rounded font-bold text-6xl flex items-center justify-center">
 
         {{ $question->duration }}
@@ -51,10 +51,14 @@
 
     var timer = document.getElementById('timer');
 
+    var isPaused = false;
+
     var timeout = setInterval(() => {
 
-        step = step - 1;
-        
+        if (!isPaused) {
+            step = step - 1;
+        }
+
         timer.innerHTML = step;
 
         if (step == 0) {
@@ -62,9 +66,13 @@
             //stop timer
             clearInterval(timeout);
             fetch(CLOSE_QUESTION_URL)
-                .then((response) => response.json())
+                .then((response) => {
+                    return response.json()
+                })
                 .then((data) => {
-                    if (data == 1) {
+
+                    if (data.status == 'close') {
+
                         //show result btn
                         document.getElementById('btnShowAnswer').style.display = 'flex'
 
@@ -73,8 +81,11 @@
 
                     }
                 });
-
         }
     }, 1000);
+
+    toggelTimer = () => {
+        this.isPaused = !this.isPaused;
+    }
 </script>
 @endsection

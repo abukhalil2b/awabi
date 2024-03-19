@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('audiences', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('phone')->nullable()->unique();
             $table->boolean('selected')->default(0);
         });
     }

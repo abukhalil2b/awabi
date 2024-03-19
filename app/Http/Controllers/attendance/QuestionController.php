@@ -11,49 +11,52 @@ class QuestionController extends Controller
 {
     public function index(Cate $cate)
     {
-        $questions = Question::where('cate_id',$cate->id)->get();
+        $questions = Question::where('cate_id', $cate->id)->get();
 
-        return view('attendance.question.index',compact('questions','cate'));
+        return view('attendance.question.index', compact('questions', 'cate'));
     }
 
     public function create(Cate $cate)
     {
-        $questions = Question::where('cate_id',$cate->id)->get();
+        $questions = Question::where('cate_id', $cate->id)->get();
 
-        return view('admin.attendance.question.create',compact('cate','questions'));
+        return view('admin.attendance.question.create', compact('cate', 'questions'));
     }
 
     public function show(Question $question)
     {
-        $question->update(['status'=>'open']);
-        
-        return view('attendance.question.show',compact('question'));
+        $question->update(['status' => 'open']);
+
+        return view('attendance.question.show', compact('question'));
     }
 
     public function close(Question $question)
     {
-        return $question->update(['status'=>'close']);
+        $question->update(['status' => 'close']);
+        return response()->json([
+            'status' => 'close',
+        ]);
     }
 
     public function edit(Question $question)
     {
-        return view('admin.attendance.question.edit',compact('question'));
+        return view('admin.attendance.question.edit', compact('question'));
     }
 
-    public function update(Request $request,Question $question)
+    public function update(Request $request, Question $question)
     {
         $fields = $request->validate([
-            'content'=>'required',
-            'A'=>'required',
-            'B'=>'required',
-            'C'=>'required',
-            'D'=>'required',
-            'ans'=>'required',
-            'status'=>'required'
+            'content' => 'required',
+            'A' => 'required',
+            'B' => 'required',
+            'C' => 'required',
+            'D' => 'required',
+            'ans' => 'required',
+            'status' => 'required'
         ]);
 
         $question->update($fields);
-        
+
         return back();
     }
 

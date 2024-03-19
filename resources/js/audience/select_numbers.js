@@ -8,7 +8,7 @@ export default function () {
 
         timesOfCount: 50,
 
-        selectedPhone: "",
+        selectAudienceId: 0,
 
         progress: 0,
 
@@ -37,9 +37,9 @@ export default function () {
             // console.log(this.selected);
         },
 
-        storeSelectAudience(phone) {
-            this.selectedPhone = phone;
-            console.log(phone);
+        storeSelectAudience(id) {
+            this.selectAudienceId = id;
+           
         },
     };
 }

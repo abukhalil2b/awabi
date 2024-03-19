@@ -77,7 +77,7 @@ Route::get('questions_archive', function () {
 */
 
 // Route is open to all
-Route::get('audience/register', AudienceRegister::class)
+Route::get('audience/reg', AudienceRegister::class)
     ->name('audience.register');
 
 /*

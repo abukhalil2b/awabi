@@ -29,24 +29,24 @@ class DatabaseSeeder extends Seeder
             'name' => 'الإدارة',
             'app' => 'super-admin',
             'phone' => '1',
-            'password' => Hash::make('Ele@2023'),
-            'plain_password' => 'Ele@2023'
+            'password' => Hash::make('Xx@2024'),
+            'plain_password' => 'Xx@2024'
         ]);
 
         User::create([
             'name' => 'الإدارة عن بعد',
             'app' => 'distance-admin',
             'phone' => '2',
-            'password' => Hash::make('xX$abcd@1'),
-            'plain_password' => 'xX$abcd@1'
+            'password' => Hash::make('2@24xx'),
+            'plain_password' => '2@24xx'
         ]);
 
         User::create([
             'name' => 'الإدارة الجماهيرية',
             'app' => 'attendance-admin',
             'phone' => '3',
-            'password' => Hash::make('1@abcdXx'),
-            'plain_password' => '1@abcdXx'
+            'password' => Hash::make('2@24xx'),
+            'plain_password' => '2@24xx'
         ]);
 
         /** - - - - - attendance students - - - - - - - -  */

@@ -12,7 +12,7 @@
 
     <div class="p-3 w-full flex flex-col gap-1 justify-center items-center">
         <x-secondary-button @click="withdraw">
-            سحب رقم
+            سحب اسم
         </x-secondary-button>
         <progress x-model="progress" max="50" class=""></progress>
     </div>
@@ -21,8 +21,7 @@
 
         <template x-if="selected">
             <div>
-                <div x-text="selected.phone" @click="storeSelectAudience(selected.phone)" class="w-44 text-white text-center text-4xl border rounded p-1 hover:cursor-pointer"></div>
-                <div x-text="selected.name" class="w-44 text-white text-center text-sm p-1"></div>
+                <div x-text="selected.name" @click="storeSelectAudience(selected.id)" class="w-[400px] text-white text-center text-2xl border rounded p-1 hover:cursor-pointer"></div>
             </div>
         </template>
 
@@ -30,12 +29,12 @@
 
     <div class="mt-3 p-5 w-full flex justify-center">
 
-        <div x-cloak x-show="selectedPhone != '' ">
+        <div x-cloak x-show="selectAudienceId != 0 ">
             <form action="{{ route('audience.store.selected') }}" method="POST" class="">
                 @csrf
-                <input name="phone" type="hidden" x-model="selectedPhone" class="text-red-800">
+                <input name="audienceId" type="hidden" x-model="selectAudienceId" class="text-red-800">
                 <x-secondary-button class="text-red-800" type="submit">
-                    حفظ الرقم
+                  إزالة الرقم من قائمة السحب
                 </x-secondary-button>
             </form>
         </div>

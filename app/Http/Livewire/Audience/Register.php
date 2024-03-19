@@ -7,14 +7,12 @@ use Livewire\Component;
 
 class Register extends Component
 {
-    public $phone;
 
     public $name;
 
     public $message;
 
     protected $rules = [
-        'phone' => 'required',
         'name' => 'required',
     ];
 
@@ -22,17 +20,19 @@ class Register extends Component
     {
         $this->validate();
 
-        $audience = Audience::where('phone', $this->phone)->first();
+        $audience = Audience::where('name', 'LIKE', $this->name)->first();
 
         if ($audience) {
             $this->message = 'مسجل مسبقاً';
+            $this->reset(['name']);
             return;
         }
 
         Audience::create([
             'name' => $this->name,
-            'phone' => $this->phone,
         ]);
+
+        $this->reset(['name']);
 
         $this->message = 'تم تسجيلك';
     }

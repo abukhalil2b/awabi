@@ -18,7 +18,7 @@ class AudienceController extends Controller
     public function storeSelected(Request $request)
     {
 
-        Audience::where('phone', $request->phone)
+        Audience::where('id', $request->audienceId)
             ->update(['selected' => 1]);
 
         return back();
