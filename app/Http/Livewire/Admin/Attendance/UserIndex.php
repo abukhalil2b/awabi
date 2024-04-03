@@ -27,6 +27,16 @@ class UserIndex extends Component
         $this->emit('refreshUser');
     }
 
+    public function resetName()
+    {
+
+        User::where('app', 'attendance')->update([
+            'name' => NULL
+        ]);
+
+        $this->emit('refreshUser');
+    }
+
     public function render()
     {
         $users = User::where('app', 'attendance')->get();

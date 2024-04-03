@@ -1,12 +1,15 @@
 <div>
-    <x-secondary-button wire:click="resetPassword" class="mt-4 print:hidden">
-        <div class="flex gap-1">
-            <div>
-                تغير كلمة المرور للجميع
-            </div>
-            <div class="loader w-4 h-4" wire:loading></div>
+    <div class="flex gap-3 items-center">
+        <x-secondary-button wire:click="resetPassword" class="print:hidden">
+            تغير كلمة المرور للجميع
+        </x-secondary-button>
+        <x-secondary-button wire:click="resetName" class="print:hidden">
+            تفريغ حقل الاسماء لإستقبال مشاركين جدد
+        </x-secondary-button>
+        <div>
+            <div class="loader w-8 h-8" wire:loading></div>
         </div>
-    </x-secondary-button>
+    </div>
 
 
     @foreach($users as $user)
