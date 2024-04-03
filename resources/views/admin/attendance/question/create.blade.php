@@ -1,22 +1,22 @@
 <x-admin-layout>
     <x-slot name="header">
-      
+
     </x-slot>
 
     <div class="p-3 text-xs">
 
-        
+
         <livewire:admin.attendance.multi-choice-question-create :cate="$cate" />
 
-        <div x-data="{show:false}" >
+        <div x-data="{show:false}">
             <div @click="show=true" x-cloak x-show=" ! show " class="mt-2 hover:cursor-pointer">تعديل</div>
             <div x-cloak x-show="show">
                 <livewire:admin.attendance.cate-update :cate="$cate" />
             </div>
         </div>
-        
+
         <div class="mt-3 bg-white rounded p-1 w-full">
-الأسئلة
+            الأسئلة
         </div>
         @foreach($questions as $question)
 

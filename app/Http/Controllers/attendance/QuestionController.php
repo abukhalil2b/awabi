@@ -18,7 +18,9 @@ class QuestionController extends Controller
 
     public function create(Cate $cate)
     {
-        $questions = Question::where('cate_id', $cate->id)->get();
+        $questions = Question::where('cate_id', $cate->id)
+        ->orderby('status','desc')
+        ->get();
 
         return view('admin.attendance.question.create', compact('cate', 'questions'));
     }

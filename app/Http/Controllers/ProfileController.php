@@ -52,7 +52,7 @@ class ProfileController extends Controller
             ->first();
 
             if( ! $hasPermission){
-                return view('attendance.roundplay.no_permission_on_roundplay');
+                return view('attendance.roundplay.no_permission_on_roundplay',compact('user'));
             }
         //set answer to null
         $answer = null;

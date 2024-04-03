@@ -56,13 +56,16 @@
 
             var passwordInput = document.getElementById('password');
             var passwordAttribute = passwordInput.getAttribute('type');
-            
-            if(passwordAttribute == 'password'){
+
+            if (passwordAttribute == 'password') {
                 passwordInput.setAttribute('type', 'text')
-            }else{
+            } else {
                 passwordInput.setAttribute('type', 'password')
             }
-            
+
         }
+
     </script>
+
+
 </x-guest-layout>

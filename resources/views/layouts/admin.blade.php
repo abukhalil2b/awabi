@@ -14,21 +14,19 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
-    <div class="min-h-screen bg-gray-100">
+<body class="min-h-screen bg-gray-100">
+   
         @include('layouts.admin_navigation')
 
-     
         <div class="flex h-screen">
             <aside class="w-32 bg-slate-700 hidden sm:block">
                 @include('layouts._admin_aside')
             </aside>
-            <main class="p-2 w-full">
+            <main class="p-2 w-full overflow-scroll">
                 {{ $slot }}
             </main>
         </div>
-
-    </div>
+    <footer class="my-6 py-6 text-center">All @copyright Reserved</footer>
 
     @livewireScripts
 </body>

@@ -33,22 +33,40 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        // ]);
+        // return $request->all();
+
+        //just we want name of user
+        $request->validate([
+            'name' => ['required', 'string', 'max:255']
+        ]);
+
+        $users = User::where(['app' => 'attendance', 'name' => NULL])->get();
+
+        if (count($users)) {
+
+            $user = User::find($users[0]->id);
+
+            $user->name = $request->name;
+
+            $user->save();
+
+            Auth::login($user);
+
+            return redirect()->intended(RouteServiceProvider::ATTENDANCE_HOME);
+        }
+        die('<h1>انتهى التسجيل</h1>');
+        // $randomPassword = rand(1111, 9999);
 
         // $user = User::create([
+        //     'app' => 'attendance',
         //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
+        //     'email' => $request->name,
+        //     'password' => Hash::make($randomPassword),
+        //     'plain_password' => $randomPassword
         // ]);
-
-        // event(new Registered($user));
 
         // Auth::login($user);
 
-        // return redirect(RouteServiceProvider::HOME);
+        // return redirect()->route('/');
     }
 }
