@@ -1,1 +1,1 @@
-<img src="/vision_logo.png" alt="" width="60" class="">
+<img src="/logo.png" alt="" width="60" class="">
