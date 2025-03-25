@@ -10,8 +10,7 @@
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-
-    <title>Document</title>
+    <title>مسابقة المثقف الأول</title>
 </head>
 
 <body class="bg-black h-screen">

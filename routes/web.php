@@ -66,8 +66,8 @@ Route::get('questions_archive', function () {
     $questions = DB::table('questions_archive')->get();
     return view('questions_archive', compact('questions'));
 })
-// ->middleware('userPermission:questions_archive')
-->name('questions_archive');
+    // ->middleware('userPermission:questions_archive')
+    ->name('questions_archive');
 
 
 /*
@@ -313,6 +313,11 @@ Route::get('distance_dashboard', [ProfileController::class, 'distanceDashboard']
 Route::get('attendance_dashboard', [ProfileController::class, 'attendanceDashboard'])
     ->middleware('attendance')
     ->name('attendance_dashboard');
+
+Route::post('/attendance/send-answer', [ProfileController::class, 'sendAnswer'])->name('attendance.sendAnswer');
+
+Route::get('/api/getOpenQuestion', [ProfileController::class, 'getOpenQuestion'])->name('api.getOpenQuestion');
+
 
 /*
 |--------------------------------------------------------------------------
