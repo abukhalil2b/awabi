@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\attendance;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Answer;
 use App\Models\Question;
 use App\Models\Roundplay;

@@ -22,7 +22,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('app')->default('distance');// admin - distance - attendance
+            $table->string('app')->default('attendance');// admin  - attendance
             $table->string('phone')->nullable()->unique();
             $table->string('password');
             $table->string('plain_password',30);

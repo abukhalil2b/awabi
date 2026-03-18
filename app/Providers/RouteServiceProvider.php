@@ -17,7 +17,6 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const DISTANCE_HOME = 'distance_dashboard';
 
     public const ATTENDANCE_HOME = 'attendance_dashboard';
 

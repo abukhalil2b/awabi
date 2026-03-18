@@ -81,52 +81,6 @@
         </div>
 
 
-        <div class="mt-4">
-            distanceUsers
-        </div>
-        <div class="text-xs">
-            @foreach($distanceUsers as $permission)
-
-            <label class="mt-2 block p-1 rounded border">
-                <input type="checkbox" name="permissionIds[]" value="{{ $permission->id }}" @if( $role->hasPermission($permission->id) ) checked @endif>
-                {{ $permission->title }}
-
-            </label>
-
-            @endforeach
-        </div>
-
-        <div class="mt-4">
-            distanceCates
-        </div>
-        <div class="text-xs">
-            @foreach($distanceCates as $permission)
-
-            <label class="mt-2 block p-1 rounded border">
-                <input type="checkbox" name="permissionIds[]" value="{{ $permission->id }}" @if( $role->hasPermission($permission->id) ) checked @endif>
-                {{ $permission->title }}
-
-            </label>
-
-            @endforeach
-        </div>
-
-        <div class="mt-4">
-            distanceQuestions
-        </div>
-        <div class="text-xs">
-            @foreach($distanceQuestions as $permission)
-
-            <label class="mt-2 block p-1 rounded border">
-                <input type="checkbox" name="permissionIds[]" value="{{ $permission->id }}" @if( $role->hasPermission($permission->id) ) checked @endif>
-                {{ $permission->title }}
-
-            </label>
-
-            @endforeach
-        </div>
-
-
         <x-primary-button>save</x-primary-button>
     </form>
 

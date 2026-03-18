@@ -97,51 +97,5 @@ $permissions = [
         'cate' => 'attendance.question'
     ],
 
-    [
-        'title' => 'distance.user.create',
-        'slug' => 'distance.user.create',
-        'cate' => 'distance.user'
-    ],
-
-    [
-        'title' => 'distance.user.show',
-        'slug' => 'distance.user.show',
-        'cate' => 'distance.user'
-    ],
-
-    [
-        'title' => 'distance.cate.create',
-        'slug' => 'distance.cate.create',
-        'cate' => 'distance.cate'
-    ],
-
-    [
-        'title' => 'distance.cate.active',
-        'slug' => 'distance.cate.active',
-        'cate' => 'distance.cate'
-    ],
-
-    [
-        'title' => 'distance.question.create',
-        'slug' => 'distance.question.create',
-        'cate' => 'distance.question'
-    ],
-
-    [
-        'title' => 'distance.question.edit',
-        'slug' => 'distance.question.edit',
-        'cate' => 'distance.question'
-    ],
-
-    [
-        'title' => 'distance.question.delete',
-        'slug' => 'distance.question.delete',
-        'cate' => 'distance.question'
-    ],
-
-    [
-        'title' => 'distance.question.answer_index',
-        'slug' => 'distance.question.answer_index',
-        'cate' => 'distance.question'
-    ],
+    
 ];

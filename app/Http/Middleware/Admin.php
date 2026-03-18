@@ -22,10 +22,6 @@ class Admin
             return $next($request);
         }
 
-        if ($userType  == 'distance-admin') {
-            return $next($request);
-        }
-
         if ($userType  == 'attendance-admin') {
             return $next($request);
         }

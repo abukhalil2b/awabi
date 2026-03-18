@@ -36,13 +36,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if ($request->user()->app == 'super-admin' || $request->user()->app == 'distance-admin' || $request->user()->app == 'attendance-admin') {
+        if ($request->user()->app == 'super-admin' ||  $request->user()->app == 'attendance-admin') {
             
             return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
-
-        } elseif ($request->user()->app == 'distance') {
-            
-            return redirect()->intended(RouteServiceProvider::DISTANCE_HOME);
 
         } elseif ($request->user()->app == 'attendance') {
             

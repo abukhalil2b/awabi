@@ -26,9 +26,6 @@
                     الجماهيرية
                 </a>
                
-                <a href="{{ route('distance_dashboard') }}" class="bg-white text-center w-52 p-5 rounded m-3 shadow hover:opacity-70">
-                    عن بعد
-                </a>
             </div>
             <form class="mt-5 flex justify-center" action="{{ route('logout') }}" method="POST">
                 @csrf

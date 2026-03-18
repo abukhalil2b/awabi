@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('cates', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('app');// distance - attendance
+            $table->string('app');//  - attendance
             $table->string('status')->default('active');// disabled - active
         });
     }

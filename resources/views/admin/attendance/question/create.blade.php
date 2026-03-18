@@ -1,6 +1,5 @@
 <x-admin-layout>
     <x-slot name="header">
-
     </x-slot>
 
     <div class="p-3 text-xs">

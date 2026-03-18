@@ -33,14 +33,7 @@ class DatabaseSeeder extends Seeder
             'plain_password' => 'Xx@2024'
         ]);
 
-        User::create([
-            'name' => 'الإدارة عن بعد',
-            'app' => 'distance-admin',
-            'phone' => '2',
-            'password' => Hash::make('2@24xx'),
-            'plain_password' => '2@24xx'
-        ]);
-
+   
         User::create([
             'name' => 'الإدارة الجماهيرية',
             'app' => 'attendance-admin',
@@ -59,18 +52,6 @@ class DatabaseSeeder extends Seeder
                 'phone' => $attendance['phone'],
                 'password' => Hash::make($randPass),
                 'plain_password' => $randPass
-            ]);
-        }
-
-        /** - - - - - students - - - - - - - -  */
-        require __DIR__ . '/students.php';
-
-        foreach ($students as $student) {
-            User::create([
-                'app' => 'distance',
-                'phone' => $student['phone'],
-                'password' => Hash::make($student['phone']),
-                'plain_password' => $student['phone']
             ]);
         }
 
@@ -135,10 +116,6 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        DB::table('role_user')->insert([
-            'role_id' => 1,
-            'user_id' => 2, //distance-admin
-        ]);
 
         DB::table('role_user')->insert([
             'role_id' => 2,

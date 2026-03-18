@@ -38,21 +38,12 @@ class PermissionController extends Controller
 
         $attendanceQuestions = Permission::whereCate('attendance.question')->get();
 
-        $distanceUsers = Permission::whereCate('distance.user')->get();
-
-        $distanceCates = Permission::whereCate('distance.cate')->get();
-
-        $distanceQuestions = Permission::whereCate('distance.question')->get();
-
         return view('admin.role.permission', compact(
         'attendanceUsers',
         'attendanceRoundplays',
         'attendanceUserRoundplays',
         'attendanceCates',
         'attendanceQuestions',
-        'distanceUsers',
-        'distanceCates',
-        'distanceQuestions',
         'role'));
     }
 

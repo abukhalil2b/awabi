@@ -38,18 +38,6 @@
         </div>
     </form>
 
-    @php
-
-    $audienceSetting = App\Models\Setting::where('name','تسجيل الحضور في القاعة')->first();
-
-    @endphp
-
-    @if( $audienceSetting->status == 'open')
-    <div class="mt-5">
-        <a href="{{ route('audience.register') }}"> تسجيل الحضور في القاعة</a>
-    </div>
-    @endif
-
 
     <script>
         function toggle() {

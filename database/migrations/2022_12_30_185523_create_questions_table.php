@@ -26,7 +26,6 @@ return new class extends Migration
             $table->string('img')->nullable();
             $table->integer('duration')->default(30);
             $table->string('status',20)->default('ready');//ready - open - close
-            $table->string('type',20)->default('multiChoice');// correctAnswer - multiChoice
             $table->foreignIdFor(Cate::class)
             ->nullOnDelete();
             $table->timestamps();

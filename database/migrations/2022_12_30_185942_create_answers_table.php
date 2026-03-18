@@ -19,7 +19,7 @@ return new class extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            $table->string('app');// distance - attendance
+            $table->string('app');//  - attendance
   
 
             $table->foreignIdFor(Roundplay::class)

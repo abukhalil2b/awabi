@@ -5,11 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    @if(Auth::user()->app == 'distance')
-                    <a href="{{ route('distance_dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                    </a>
-                    @endif
+                  
 
                     @if(Auth::user()->app == 'attendance')
                     <a href="{{ route('attendance_dashboard') }}">
@@ -17,7 +13,7 @@
                     </a>
                     @endif
 
-                    @if(Auth::user()->app == 'super-admin' || Auth::user()->app == 'attendance-admin' || Auth::user()->app == 'distance-admin')
+                    @if(Auth::user()->app == 'super-admin' || Auth::user()->app == 'attendance-admin')
                     <a href="{{ route('admin.dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
@@ -42,12 +38,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <!-- distance user can only update his profile -->
-                        @if(Auth::user()->app == 'distance')
-                        <x-dropdown-link :href="route('profile.edit')">
-                            الملف الشخصي
-                        </x-dropdown-link>
-                        @endif
+                     
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -88,12 +79,7 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                <!-- distance user can only update his profile -->
-                @if(Auth::user()->app == 'distance')
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    الملف الشخصي
-                </x-responsive-nav-link>
-                @endif
+              
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

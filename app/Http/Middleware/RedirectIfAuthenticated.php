@@ -29,12 +29,10 @@ class RedirectIfAuthenticated
 
                 $userApp = $request->user()->app;
                 
-                if ($userApp  == 'super-admin' || $userApp  == 'distance-admin' || $userApp  == 'attendance-admin') {
+                if ($userApp  == 'super-admin' || $userApp  == 'attendance-admin') {
 
                     return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
-                } elseif ($userApp  == 'distance') {
-
-                    return redirect()->intended(RouteServiceProvider::DISTANCE_HOME);
+            
                 } elseif ($userApp  == 'attendance') {
 
                     return redirect()->intended(RouteServiceProvider::ATTENDANCE_HOME);

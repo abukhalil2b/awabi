@@ -16,10 +16,7 @@
 
 <body>
     <div class="min-h-screen bg-gray-100">
-        <!-- distance -->
-        @if(auth()->user()->app == 'distance')
-        @include('layouts.distance_navigation')
-        @endif
+      
 
         <!-- attendance -->
         @if(auth()->user()->app == 'attendance')

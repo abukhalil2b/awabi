@@ -18,9 +18,7 @@
            <div class="text-[8px]"> أسئلة الجولة</div>
         </x-button-link-down>
 
-        <x-button-link-down href="{{ route('admin.audience.dashboard') }}" :active="request()->routeIs('admin.audience.dashboard')">
-           <div class="text-[8px]">  الجمهور</div>
-        </x-button-link-down>
+
 
 
     </div>
