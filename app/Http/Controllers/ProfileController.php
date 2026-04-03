@@ -37,7 +37,7 @@ class ProfileController extends Controller
 
         // Set answer to null and get the open question
         $answer = null;
-        $question = Question::where(['app' => 'attendance', 'status' => 'open'])->first();
+        $question = Question::where(['status' => 'open'])->first();
         if ($question) {
             $answer = Answer::where([
                 'app'         => 'attendance',
@@ -53,7 +53,7 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
-        $question = Question::where(['app' => 'attendance', 'status' => 'open'])->first();
+        $question = Question::where(['status' => 'open'])->first();
 
         if (!$question) {
             return response()->json([

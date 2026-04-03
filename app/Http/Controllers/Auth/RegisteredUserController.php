@@ -55,18 +55,6 @@ class RegisteredUserController extends Controller
             return redirect()->intended(RouteServiceProvider::ATTENDANCE_HOME);
         }
         die('<h1>انتهى التسجيل</h1>');
-        // $randomPassword = rand(1111, 9999);
-
-        // $user = User::create([
-        //     'app' => 'attendance',
-        //     'name' => $request->name,
-        //     'email' => $request->name,
-        //     'password' => Hash::make($randomPassword),
-        //     'plain_password' => $randomPassword
-        // ]);
-
-        // Auth::login($user);
-
-        // return redirect()->route('/');
+      
     }
 }

@@ -45,7 +45,6 @@ class MultiChoiceQuestionCreate extends Component
             'D' => $this->D,
             'ans' => $this->ans,
             'duration' => $this->duration,
-            'app' => 'attendance',
             'cate_id' => $this->cate->id,
         ]);
 
