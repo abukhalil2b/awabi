@@ -14,8 +14,12 @@ class RoundplayController extends Controller
 
     public function show(Roundplay $roundplay)
     {
-        $roundplay = Roundplay::where('id', $roundplay->id)->with('answers')->first();
-        return view('admin.attendance.roundplay.show', compact('roundplay'));
+        $roundplay = Roundplay::where('id', $roundplay->id)
+->with('users')
+        ->with('answers')->first();
+
+        $users = $roundplay->users;
+        return view('admin.attendance.roundplay.show', compact('roundplay','users'));
     }
 
     public function userRoundplay(Roundplay $roundplay)

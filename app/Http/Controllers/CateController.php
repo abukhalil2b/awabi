@@ -23,14 +23,14 @@ class CateController extends Controller
         ->with('questions')
         ->get();
 
-        $questions = Question::where(['status'=>'open','app'=>'attendance'])->get();
+        $questions = Question::where(['status'=>'open'])->get();
 
         return view('admin.attendance.cate.create',compact('cates','questions'));
     }
 
     public function store(Request $request)
     {
-        Cate::create(['title'=>$request->title,'app'=>'attendance']);
+        Cate::create(['title'=>$request->title]);
 
         return back();
     }
