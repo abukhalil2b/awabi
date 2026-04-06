@@ -10,7 +10,9 @@ class QuestionController extends Controller
 {
     public function index(Cate $cate)
     {
-        $questions = Question::where('cate_id', $cate->id)->get();
+        $questions = Question::where('cate_id', $cate->id)
+        ->whereNot('status','archive')
+        ->get();
 
         return view('attendance.question.index', compact('questions', 'cate'));
     }
@@ -18,6 +20,7 @@ class QuestionController extends Controller
     public function create(Cate $cate)
     {
         $questions = Question::where('cate_id', $cate->id)
+        ->whereNot('status','archive')
         ->orderby('status','desc')
         ->get();
 
@@ -61,9 +64,9 @@ class QuestionController extends Controller
         return back();
     }
 
-    public function delete(Question $question)
+    public function archive(Question $question)
     {
-        $question->delete();
+        $question->update(['status' => 'archive']);
 
         return back();
     }

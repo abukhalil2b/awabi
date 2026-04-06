@@ -2,6 +2,12 @@
 
 @php
 
+if($question->status == 'archive'){
+$classes = 'border-purple-900 text-purple-900 bg-purple-200';
+
+$href = '#';
+}
+
 if($question->status == 'ready'){
 $classes = 'border-blue-900 text-blue-900 bg-blue-200';
 

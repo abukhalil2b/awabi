@@ -101,9 +101,9 @@ Route::middleware(['auth'])->group(function () {
         ->middleware('userPermission:attendance.question.edit')
         ->name('admin.attendance.question.update');
 
-    Route::post('admin/attendance/question/delete/{question}', [QuestionController::class, 'delete'])
-        ->middleware('userPermission:attendance.question.delete')
-        ->name('admin.attendance.question.delete');
+    Route::post('admin/attendance/question/archive/{question}', [QuestionController::class, 'archive'])
+        ->middleware('userPermission:attendance.question.archive')
+        ->name('admin.attendance.question.archive');
 
     // dashboard
     Route::get('admin/dashboard', [ProfileController::class, 'adminDashboard'])->name('admin.dashboard');

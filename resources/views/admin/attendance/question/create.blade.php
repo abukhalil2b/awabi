@@ -43,12 +43,12 @@
                 </a>
                 <div x-data="{ show:false }">
                     <x-danger-button x-cloak x-show=" ! show " @click=" show=true ">
-                        حذف
+                        أرشفة
                     </x-danger-button>
-                    <form x-cloak x-show="show" action="{{ route('admin.attendance.question.delete',$question->id) }}" method="post">
+                    <form x-cloak x-show="show" action="{{ route('admin.attendance.question.archive',$question->id) }}" method="post">
                         @csrf
                         <x-danger-button type="submit">
-                            تأكيد الحذف
+                            تأكيد الأرشقة
                         </x-danger-button>
                     </form>
                 </div>

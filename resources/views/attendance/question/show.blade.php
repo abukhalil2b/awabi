@@ -1,91 +1,94 @@
 @extends('layouts.attendance')
 
 @section('content')
+    @if ($question->status == 'open')
+        <div class="max-w-7xl mx-auto px-2 sm:px-2 lg:px-4">
 
-@if($question->status == 'open')
+            <x-question-content>
+                {{ $question->content }}
+            </x-question-content>
+            <div class="p-3">
+                <div x-data="{ show: false }">
+                    <div class="flex gap-5">
+                        <div @click="show=true" class="w-32 text-white cursor-pointer">عرض الخيارات</div>
+                        <a href="#" class="w-32 text-white cursor-pointer" onclick="toggelTimer()">توقيف وتشغيل العد
+                            التنازلي</a>
+                    </div>
+                    <x-question-option letter="A" x-cloak x-show="show">
+                        {{ $question->A }}
+                    </x-question-option>
 
-<x-question-content>
-    {{$question->content}}
-</x-question-content>
-<div class="p-3">
-    <div x-data="{ show:false }">
-        <div class="flex gap-5">
-            <div @click="show=true" class="w-32 text-white cursor-pointer">عرض الخيارات</div>
-            <a href="#" class="w-32 text-white cursor-pointer" onclick="toggelTimer()">توقيف وتشغيل العد التنازلي</a>
-        </div>
-        <x-question-option letter="A" x-cloak x-show="show">
-            {{$question->A}}
-        </x-question-option>
+                    <x-question-option letter="B" x-cloak x-show="show">
+                        {{ $question->B }}
+                    </x-question-option>
 
-        <x-question-option letter="B" x-cloak x-show="show">
-            {{$question->B}}
-        </x-question-option>
+                    <x-question-option letter="C" x-cloak x-show="show">
+                        {{ $question->C }}
+                    </x-question-option>
 
-        <x-question-option letter="C" x-cloak x-show="show">
-            {{$question->C}}
-        </x-question-option>
+                    <x-question-option letter="D" x-cloak x-show="show">
+                        {{ $question->D }}
+                    </x-question-option>
+                </div>
+                <div id="timer"
+                    class="w-full h-16 mt-3 bg-red-100 text-red-900 rounded font-bold text-6xl flex items-center justify-center">
 
-        <x-question-option letter="D" x-cloak x-show="show">
-            {{$question->D}}
-        </x-question-option>
+                    {{ $question->duration }}
+
+                </div>
+
+                <a href="{{ route('attendance.question.answer.index', $question->id) }}" id="btnShowAnswer"
+                    class="hidden w-full h-16 mt-3 bg-red-100 text-red-900 rounded font-bold text-4xl items-center justify-center">
+                    عرض النتيجة
+                </a>
+
+            </div>
+        @else
+            <div class="flex justify-center items-center text-4xl text-red-800 h-full">لايوجد سؤال</div>
+    @endif
     </div>
-    <div id="timer" class="w-full h-16 mt-3 bg-red-100 text-red-900 rounded font-bold text-6xl flex items-center justify-center">
+    <script>
+        var CLOSE_QUESTION_URL = "{{ route('attendance.question.close', $question->id) }}";
 
-        {{ $question->duration }}
+        var step = "{{ $question->duration }}";
 
-    </div>
+        var timer = document.getElementById('timer');
 
-    <a href="{{ route('attendance.question.answer.index',$question->id) }}" id="btnShowAnswer" class="hidden w-full h-16 mt-3 bg-red-100 text-red-900 rounded font-bold text-4xl items-center justify-center">
-        عرض النتيجة
-    </a>
+        var isPaused = false;
 
-</div>
-@else
-<div class="flex justify-center items-center text-4xl text-red-800 h-full">لايوجد سؤال</div>
-@endif
+        var timeout = setInterval(() => {
 
-<script>
-    var CLOSE_QUESTION_URL = "{{ route('attendance.question.close',$question->id) }}";
+            if (!isPaused) {
+                step = step - 1;
+            }
 
-    var step = "{{ $question->duration }}";
+            timer.innerHTML = step;
 
-    var timer = document.getElementById('timer');
+            if (step == 0) {
 
-    var isPaused = false;
+                //stop timer
+                clearInterval(timeout);
+                fetch(CLOSE_QUESTION_URL)
+                    .then((response) => {
+                        return response.json()
+                    })
+                    .then((data) => {
 
-    var timeout = setInterval(() => {
+                        if (data.status == 'close') {
 
-        if (!isPaused) {
-            step = step - 1;
+                            //show result btn
+                            document.getElementById('btnShowAnswer').style.display = 'flex'
+
+                            //hide timer element
+                            timer.style.display = 'none'
+
+                        }
+                    });
+            }
+        }, 1000);
+
+        toggelTimer = () => {
+            this.isPaused = !this.isPaused;
         }
-
-        timer.innerHTML = step;
-
-        if (step == 0) {
-
-            //stop timer
-            clearInterval(timeout);
-            fetch(CLOSE_QUESTION_URL)
-                .then((response) => {
-                    return response.json()
-                })
-                .then((data) => {
-
-                    if (data.status == 'close') {
-
-                        //show result btn
-                        document.getElementById('btnShowAnswer').style.display = 'flex'
-
-                        //hide timer element
-                        timer.style.display = 'none'
-
-                    }
-                });
-        }
-    }, 1000);
-
-    toggelTimer = () => {
-        this.isPaused = !this.isPaused;
-    }
-</script>
+    </script>
 @endsection
